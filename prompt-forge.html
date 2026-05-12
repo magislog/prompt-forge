@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Forge</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#f0e6ff;font-family:'Hiragino Kaku Gothic ProN','Meiryo',sans-serif;min-height:100vh;overflow-x:hidden;}
+@keyframes float-a{0%,100%{transform:translateY(0px) rotate(-2deg);}50%{transform:translateY(-16px) rotate(2deg);}}
+@keyframes float-b{0%,100%{transform:translateX(0px) rotate(1deg);}50%{transform:translateX(-14px) rotate(-2deg);}}
+@keyframes float-c{0%,100%{transform:translateX(0px) translateY(0px);}25%{transform:translateX(10px) translateY(-8px);}75%{transform:translateX(-10px) translateY(-4px);}}
+@keyframes float-d{0%,80%,100%{transform:translateY(0px) scaleY(1);}40%,60%{transform:translateY(-30px) scaleY(1.05);}90%{transform:translateY(4px) scaleY(0.95);}}
+@keyframes float-e{0%,100%{transform:rotate(-3deg) translateY(0);}50%{transform:rotate(3deg) translateY(-12px);}}
+.mini-chara{position:fixed;width:144px;height:144px;border-radius:50%;border:2px solid #e0c8f8;overflow:hidden;background:#ede0ff;pointer-events:none;z-index:0;opacity:0.85;}
+.mini-chara img{width:100%;height:100%;object-fit:cover;}
+.float-a{animation:float-a 4s ease-in-out infinite;}
+.float-b{animation:float-b 5s ease-in-out infinite;}
+.float-c{animation:float-c 6s ease-in-out infinite;}
+.float-d{animation:float-d 1.6s ease-in-out infinite;}
+.float-e{animation:float-e 3.5s ease-in-out infinite;}
+.wrapper{position:relative;z-index:1;max-width:1300px;margin:0 auto;padding:20px;}
+.slideshow-wrap{width:100%;aspect-ratio:16/9;position:relative;background:#f0e4ff;border-radius:20px 20px 0 0;overflow:hidden;}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 0.8s ease;}
+.slide.active{opacity:1;}
+.slide img{width:100%;height:100%;object-fit:cover;}
+.slide-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:40px;color:#d4a8f0;letter-spacing:16px;}
+.slide-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2;}
+.sdot{width:8px;height:8px;border-radius:50%;background:#e8d0f5;cursor:pointer;border:none;padding:0;transition:background 0.3s;}
+.sdot.active{background:#c090e0;}
+.title-bar{background:#fdf6ff;border:1.5px solid #e8d0f5;border-top:none;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;}
+.app-title{font-size:16px;font-weight:700;color:#7a4fa0;letter-spacing:0.08em;}
+.app-sub{font-size:10px;color:#c090e0;margin-top:2px;}
+.dots{display:flex;gap:5px;}
+.dot{width:8px;height:8px;border-radius:50%;}
+
+/* 上タブ(生成/設定) */
+.tabs{display:flex;gap:6px;margin:14px 0;}
+.tab{flex:1;padding:8px;font-size:13px;text-align:center;border-radius:20px;cursor:pointer;border:1.5px solid #e8d0f5;background:#fdf6ff;color:#b090cc;font-weight:500;transition:all 0.2s;}
+.tab.active{background:#f3e8ff;border-color:#d4a8f0;color:#7a4fa0;}
+.tab:hover:not(.active){background:#fdf0ff;}
+
+.columns{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;}
+.col{background:#fdf6ff;border:1.5px solid #e8d0f5;border-radius:16px;padding:16px;}
+.col-title{font-size:11px;font-weight:700;color:#c090e0;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.col-title::after{content:'';flex:1;height:1px;background:#f0e0ff;}
+.screen{display:none;}
+.screen.active{display:block;}
+.section-label{font-size:10px;color:#c090e0;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.section-label::after{content:'';flex:1;height:1px;background:#f0e0ff;}
+
+/* 大分類タブ */
+.major-tabs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;}
+.major-tab{padding:6px 12px;font-size:12px;border-radius:18px;cursor:pointer;border:1.5px solid #e8d0f5;background:#fff;color:#9a70c0;font-weight:500;transition:all 0.15s;position:relative;}
+.major-tab.active{background:#c090e0;border-color:#c090e0;color:#fff;}
+.major-tab:hover:not(.active){background:#f3e8ff;border-color:#d4a8f0;}
+.major-tab .badge{display:inline-block;margin-left:5px;font-size:10px;padding:1px 6px;background:#fff;color:#c090e0;border-radius:10px;font-weight:600;}
+.major-tab.active .badge{background:#fff;color:#c090e0;}
+.major-tab:not(.active) .badge{display:none;}
+.major-tab[data-count="0"] .badge{display:none;}
+
+/* 中分類セクション */
+.group-section{margin-bottom:14px;}
+.group-title{font-size:12px;font-weight:700;color:#7a4fa0;margin-bottom:7px;padding:5px 10px;background:#f3e8ff;border-radius:10px;display:flex;align-items:center;justify-content:space-between;}
+.group-title .gcount{font-size:10px;color:#9a70c0;background:#fff;padding:1px 7px;border-radius:10px;}
+
+/* アコーディオン */
+.accordion{margin-bottom:7px;border:1.5px solid #f0e0ff;border-radius:12px;overflow:hidden;background:#fff;}
+.accordion-head{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;cursor:pointer;user-select:none;transition:background 0.15s;}
+.accordion-head:hover{background:#fdf6ff;}
+.accordion-title{font-size:12px;color:#7a4fa0;font-weight:500;display:flex;align-items:center;gap:6px;}
+.accordion-side{font-size:9px;padding:1px 6px;border-radius:8px;font-weight:600;}
+.accordion-side.base{background:#dbeaff;color:#4a7aa0;}
+.accordion-side.chara{background:#ffdee5;color:#a04a6a;}
+.accordion-meta{display:flex;align-items:center;gap:6px;}
+.acc-count{font-size:10px;color:#c090e0;background:#f3e8ff;padding:2px 7px;border-radius:20px;}
+.acc-arrow{font-size:9px;color:#c090e0;transition:transform 0.2s;}
+.accordion.open .acc-arrow{transform:rotate(180deg);}
+.accordion-body{display:none;padding:9px 12px 11px;border-top:1.5px solid #f0e0ff;background:#fefbff;}
+.accordion.open .accordion-body{display:block;}
+.check-grid{display:flex;flex-wrap:wrap;gap:5px;}
+.check-item{display:flex;align-items:center;gap:4px;cursor:pointer;padding:1px 2px;}
+.check-item input[type=checkbox]{width:13px;height:13px;accent-color:#c090e0;cursor:pointer;}
+.check-item span{font-size:12px;color:#7a4fa0;}
+.check-item:hover span{color:#9a60c0;}
+
+/* テンプレート */
+.template-bar{background:#f9f0ff;border:1.5px solid #f0e0ff;border-radius:12px;padding:10px;margin-bottom:12px;}
+.template-row{display:flex;gap:6px;align-items:center;margin-bottom:7px;}
+.template-input{flex:1;font-size:12px;padding:5px 10px;background:#fff;border:1.5px solid #e8d0f5;border-radius:20px;color:#7a4fa0;outline:none;}
+.template-input:focus{border-color:#d4a8f0;}
+.template-save-btn{font-size:11px;padding:5px 12px;background:#f3e8ff;border:1.5px solid #d4a8f0;border-radius:20px;color:#9a60c0;cursor:pointer;white-space:nowrap;}
+.template-save-btn:hover{background:#ead0ff;}
+.template-list{display:flex;flex-wrap:wrap;gap:5px;}
+.template-tag{display:flex;align-items:center;gap:4px;background:#fff;border:1.5px solid #e0c8f8;border-radius:20px;padding:3px 10px;font-size:11px;color:#7a4fa0;cursor:pointer;transition:all 0.15s;}
+.template-tag:hover{background:#f3e8ff;border-color:#d4a8f0;}
+.template-tag .rm{background:none;border:none;color:#d4b0e8;cursor:pointer;font-size:12px;padding:0;line-height:1;}
+.template-tag .rm:hover{color:#c060a0;}
+.template-empty{font-size:11px;color:#d4b0e8;}
+
+.divider{border:none;border-top:1.5px dashed #f0e0ff;margin:12px 0;}
+.block-title{font-size:11px;font-weight:700;color:#9a70c0;margin-bottom:8px;display:flex;align-items:center;gap:5px;}
+.block-title::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:#d4a8f0;}
+.prompt-section{margin-bottom:8px;}
+.prompt-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;}
+.prompt-label{font-size:10px;letter-spacing:0.08em;font-weight:700;}
+.prompt-label.pos{color:#5a90c0;}
+.prompt-label.neg{color:#c05a7a;}
+.prompt-box{background:#fff;border:1.5px solid #f0e0ff;border-radius:10px;padding:8px 12px;font-size:10px;font-family:'Courier New',monospace;line-height:1.7;min-height:44px;word-break:break-all;color:#888;}
+.prompt-box.pos{border-left:3px solid #a8c8f0;color:#4a7aa0;}
+.prompt-box.neg{border-left:3px solid #f0a8c0;color:#a04a6a;}
+.copy-btn{font-size:10px;padding:3px 12px;background:#f3e8ff;border:1.5px solid #d4a8f0;border-radius:20px;color:#9a60c0;cursor:pointer;font-weight:500;transition:all 0.15s;}
+.copy-btn:hover{background:#ead0ff;}
+.copy-btn.done{background:#d0f0e0;border-color:#90d0b0;color:#408060;}
+
+/* クリアボタン */
+.clear-bar{display:flex;gap:6px;margin-bottom:10px;}
+.clear-btn{font-size:10px;padding:4px 10px;background:#fff;border:1.5px solid #e8d0f5;border-radius:18px;color:#b090cc;cursor:pointer;}
+.clear-btn:hover{background:#fdf0ff;border-color:#d4a8f0;color:#9a70c0;}
+
+/* 語句追加フォーム */
+.add-form{background:#fff;border:1.5px solid #e8d0f5;border-radius:14px;padding:16px;margin-bottom:14px;}
+.form-row{margin-bottom:10px;}
+.form-label{font-size:11px;color:#9a70c0;margin-bottom:4px;display:block;}
+select.form-select,input.form-input{width:100%;font-size:12px;padding:7px 12px;background:#fff;border:1.5px solid #e8d0f5;border-radius:20px;color:#7a4fa0;outline:none;}
+select.form-select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c090e0'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;}
+select.form-select:focus,input.form-input:focus{border-color:#d4a8f0;}
+.confirm-btn{width:100%;padding:10px;font-size:13px;font-weight:700;background:#c090e0;border:none;border-radius:20px;color:#fff;cursor:pointer;transition:all 0.15s;margin-top:4px;}
+.confirm-btn:hover{background:#b070d0;}
+.confirm-btn:active{transform:scale(0.98);}
+.toast{display:none;font-size:11px;color:#408060;background:#d0f0e0;border:1px solid #90d0b0;border-radius:20px;padding:4px 14px;text-align:center;margin-top:8px;}
+
+/* 登録済み語句 */
+.word-list-wrap{background:#f9f0ff;border:1.5px solid #f0e0ff;border-radius:12px;padding:12px;max-height:600px;overflow-y:auto;}
+.word-major-section{margin-bottom:14px;}
+.word-major-title{font-size:12px;font-weight:700;color:#7a4fa0;margin-bottom:7px;padding:4px 10px;background:#f3e8ff;border-radius:10px;}
+.word-cat-section{margin-bottom:8px;margin-left:6px;}
+.word-cat-title{font-size:11px;font-weight:600;color:#9a70c0;margin-bottom:4px;}
+.word-tags{display:flex;flex-wrap:wrap;gap:4px;}
+.word-tag{display:flex;align-items:center;gap:4px;background:#fff;border:1.5px solid #e0c8f8;border-radius:20px;padding:2px 9px;font-size:11px;color:#7a4fa0;}
+.word-tag .rm{background:none;border:none;color:#d4b0e8;cursor:pointer;font-size:12px;padding:0;line-height:1;}
+.word-tag .rm:hover{color:#c060a0;}
+.word-empty{font-size:11px;color:#d4b0e8;}
+
+/* 画像設定 */
+.setting-section{margin-bottom:14px;}
+.img-manage{background:#f9f0ff;border:1.5px solid #f0e0ff;border-radius:10px;padding:10px;margin-bottom:10px;}
+.img-hint{font-size:10px;color:#b090cc;margin-bottom:8px;line-height:1.6;}
+.img-hint code{background:#ede0ff;padding:1px 5px;border-radius:4px;font-size:10px;color:#7a4fa0;}
+.img-row{display:flex;align-items:center;gap:7px;margin-bottom:5px;}
+.img-thumb-small{width:32px;height:32px;border-radius:7px;overflow:hidden;border:1.5px solid #e0c8f8;flex-shrink:0;background:#ede0ff;display:flex;align-items:center;justify-content:center;font-size:11px;color:#c090e0;}
+.img-thumb-small img{width:100%;height:100%;object-fit:cover;}
+.img-name-input{flex:1;font-size:11px;padding:4px 9px;background:#fff;border:1.5px solid #e8d0f5;border-radius:20px;color:#7a4fa0;outline:none;}
+.img-name-input:focus{border-color:#d4a8f0;}
+.del-btn{background:none;border:none;color:#d4b0e8;cursor:pointer;font-size:15px;line-height:1;padding:2px 4px;}
+.del-btn:hover{color:#c060a0;}
+.data-row{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.data-btn{font-size:12px;padding:9px;border-radius:20px;cursor:pointer;text-align:center;font-weight:500;border:1.5px solid #e8d0f5;}
+.data-btn.load{background:#fff;color:#b090cc;}
+.data-btn.load:hover{border-color:#d4a8f0;}
+.data-btn.save{background:#f3e8ff;border-color:#d4a8f0;color:#7a4fa0;}
+.data-btn.save:hover{background:#ead0ff;}
+.add-img-btn{font-size:11px;padding:6px;background:transparent;border:1.5px dashed #e0c8f8;border-radius:20px;color:#c090e0;cursor:pointer;width:100%;}
+.add-img-btn:hover{border-color:#d4a8f0;}
+
+/* 大分類タブの中身が空の時 */
+.empty-major{font-size:12px;color:#d4b0e8;text-align:center;padding:30px;background:#fdf6ff;border-radius:10px;border:1.5px dashed #f0e0ff;}
+</style>
+</head>
+<body>
+<div id="mini-chara-container"></div>
+<div class="wrapper">
+  <div class="slideshow-wrap" id="slideshow">
+    <div class="slide active"><div class="slide-placeholder">✦ ✧ ✦</div></div>
+    <div class="slide-dots" id="slide-dots"></div>
+  </div>
+  <div class="title-bar">
+    <div>
+      <div class="app-title">✦ Prompt Forge</div>
+      <div class="app-sub">NovelAI プロンプトビルダー</div>
+    </div>
+    <div class="dots">
+      <div class="dot" style="background:#d4a8f0;"></div>
+      <div class="dot" style="background:#f0c0d8;"></div>
+      <div class="dot" style="background:#a8d4f0;"></div>
+    </div>
+  </div>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('generate')">プロンプト生成</button>
+    <button class="tab" onclick="switchTab('settings')">設定</button>
+  </div>
+
+  <!-- 生成画面 -->
+  <div id="screen-generate" class="screen active">
+    <div class="columns">
+      <div class="col">
+        <div class="col-title">選択</div>
+
+        <div class="section-label">テンプレート</div>
+        <div class="template-bar">
+          <div class="template-row">
+            <input class="template-input" type="text" id="template-name-input" placeholder="テンプレート名を入力">
+            <button class="template-save-btn" onclick="saveTemplate()">保存</button>
+          </div>
+          <div class="template-list" id="template-list"><span class="template-empty">テンプレートなし</span></div>
+        </div>
+
+        <div class="major-tabs" id="major-tabs"></div>
+        <div class="clear-bar">
+          <button class="clear-btn" onclick="expandAll(true)">全展開</button>
+          <button class="clear-btn" onclick="expandAll(false)">全折りたたみ</button>
+          <button class="clear-btn" onclick="clearChecks()">選択クリア</button>
+        </div>
+        <div id="major-content"></div>
+      </div>
+
+      <div class="col">
+        <div class="col-title">生成プロンプト</div>
+        <div class="block-title">ベースプロンプト</div>
+        <div class="prompt-section">
+          <div class="prompt-header"><span class="prompt-label pos">ポジティブ</span><button class="copy-btn" id="btn-base-pos" onclick="copyText('out-base-pos','btn-base-pos')">コピー</button></div>
+          <div class="prompt-box pos" id="out-base-pos">—</div>
+        </div>
+        <div class="prompt-section">
+          <div class="prompt-header"><span class="prompt-label neg">ネガティブ</span><button class="copy-btn" id="btn-base-neg" onclick="copyText('out-base-neg','btn-base-neg')">コピー</button></div>
+          <div class="prompt-box neg" id="out-base-neg">—</div>
+        </div>
+        <div class="divider"></div>
+        <div class="block-title">キャラクタープロンプト</div>
+        <div class="prompt-section">
+          <div class="prompt-header"><span class="prompt-label pos">ポジティブ</span><button class="copy-btn" id="btn-chara-pos" onclick="copyText('out-chara-pos','btn-chara-pos')">コピー</button></div>
+          <div class="prompt-box pos" id="out-chara-pos">—</div>
+        </div>
+        <div class="prompt-section">
+          <div class="prompt-header"><span class="prompt-label neg">ネガティブ</span><button class="copy-btn" id="btn-chara-neg" onclick="copyText('out-chara-neg','btn-chara-neg')">コピー</button></div>
+          <div class="prompt-box neg" id="out-chara-neg">—</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 設定画面 -->
+  <div id="screen-settings" class="screen">
+    <div class="columns">
+      <div class="col">
+        <div class="col-title">語句を追加</div>
+        <div class="add-form">
+          <div class="form-row">
+            <label class="form-label">大分類</label>
+            <select class="form-select" id="add-major" onchange="updateAddGroupSelect()"></select>
+          </div>
+          <div class="form-row">
+            <label class="form-label">中分類</label>
+            <select class="form-select" id="add-group" onchange="updateAddSubgroupSelect()"></select>
+          </div>
+          <div class="form-row">
+            <label class="form-label">サブグループ</label>
+            <select class="form-select" id="add-subgroup"></select>
+          </div>
+          <div class="form-row">
+            <label class="form-label">日本語表示</label>
+            <input class="form-input" type="text" id="word-ja" placeholder="例: 後ろ姿">
+          </div>
+          <div class="form-row">
+            <label class="form-label">ポジティブ(英語)</label>
+            <input class="form-input" type="text" id="word-pos" placeholder="例: back view">
+          </div>
+          <div class="form-row">
+            <label class="form-label">ネガティブ(英語・任意)</label>
+            <input class="form-input" type="text" id="word-neg" placeholder="例: front view">
+          </div>
+          <button class="confirm-btn" onclick="addWord()">確定</button>
+          <div class="toast" id="add-toast">追加しました</div>
+        </div>
+
+        <div class="col-title" style="margin-top:4px;">画像設定</div>
+        <div class="setting-section">
+          <div class="section-label">ヘッダー画像</div>
+          <div class="img-manage">
+            <div class="img-hint">画像は <code>images</code> フォルダに入れてファイル名を入力</div>
+            <div id="header-img-list"></div>
+            <button class="add-img-btn" onclick="addHeaderImg()">＋ 画像を追加</button>
+          </div>
+        </div>
+        <div class="setting-section">
+          <div class="section-label">ミニキャラ画像</div>
+          <div class="img-manage">
+            <div class="img-hint">画像は <code>images</code> フォルダに入れてファイル名を入力</div>
+            <div id="mini-img-list"></div>
+            <button class="add-img-btn" onclick="addMiniImg()">＋ 画像を追加</button>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section-label">データ管理</div>
+        <div class="data-row">
+          <label class="data-btn load" style="cursor:pointer;">JSONを読み込む<input type="file" accept=".json" style="display:none;" onchange="loadJSON(event)"></label>
+          <button class="data-btn save" onclick="saveJSON()">JSONを保存</button>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="col-title">登録済み語句</div>
+        <div class="word-list-wrap" id="word-list-wrap">
+          <div class="word-empty">語句未登録</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let data = { version: 2, majors: [], templates: [], headerImgs: [], miniImgs: [] };
+let checked = new Set();   // key: "mi_gi_sgi_wi"
+let currentMajor = 0;
+let openAccordions = new Set();  // key: "mi_gi_sgi"
+let currentSlide = 0, slideTimer = null;
+const floatClasses = ['float-a','float-b','float-c','float-d','float-e'];
+
+function escHtml(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// --- 大分類タブ ---
+function renderMajorTabs() {
+  const el = document.getElementById('major-tabs');
+  if (!data.majors.length) { el.innerHTML = '<div class="empty-major">語句データなし。設定タブから読み込んでください</div>'; return; }
+  el.innerHTML = data.majors.map((m, mi) => {
+    const count = countChecksInMajor(mi);
+    const active = mi === currentMajor ? ' active' : '';
+    return `<button class="major-tab${active}" data-count="${count}" onclick="selectMajor(${mi})">${escHtml(m.name)}<span class="badge">${count}</span></button>`;
+  }).join('');
+}
+
+function countChecksInMajor(mi) {
+  let n = 0;
+  for (const key of checked) {
+    if (key.startsWith(mi + '_')) n++;
+  }
+  return n;
+}
+
+function selectMajor(mi) {
+  currentMajor = mi;
+  renderMajorTabs();
+  renderMajorContent();
+}
+
+function renderMajorContent() {
+  const el = document.getElementById('major-content');
+  if (!data.majors.length || currentMajor >= data.majors.length) { el.innerHTML = ''; return; }
+  const m = data.majors[currentMajor];
+  if (!m.groups.length) { el.innerHTML = '<div class="empty-major">この大分類にはまだ語句がありません</div>'; return; }
+  el.innerHTML = m.groups.map((g, gi) => {
+    const gKey = `m${currentMajor}_g${gi}`;
+    const total = g.subgroups.reduce((s, sg) => s + sg.words.length, 0);
+    let chk = 0;
+    g.subgroups.forEach((sg, sgi) => {
+      sg.words.forEach((_, wi) => {
+        if (checked.has(`${currentMajor}_${gi}_${sgi}_${wi}`)) chk++;
+      });
+    });
+    return `
+      <div class="group-section">
+        <div class="group-title">
+          <span>${escHtml(g.name)}</span>
+          <span class="gcount">${chk} / ${total}</span>
+        </div>
+        ${g.subgroups.map((sg, sgi) => buildAccordion(currentMajor, gi, sgi, sg)).join('')}
+      </div>`;
+  }).join('');
+}
+
+function buildAccordion(mi, gi, sgi, sg) {
+  const accKey = `${mi}_${gi}_${sgi}`;
+  const open = openAccordions.has(accKey);
+  let chk = 0;
+  sg.words.forEach((_, wi) => { if (checked.has(`${mi}_${gi}_${sgi}_${wi}`)) chk++; });
+  const sideLabel = sg.side === 'chara' ? 'キャラ' : 'ベース';
+  return `
+    <div class="accordion${open ? ' open' : ''}">
+      <div class="accordion-head" onclick="toggleAcc('${accKey}')">
+        <span class="accordion-title">
+          ${escHtml(sg.name)}
+          <span class="accordion-side ${sg.side}">${sideLabel}</span>
+        </span>
+        <div class="accordion-meta">
+          <span class="acc-count">${chk} / ${sg.words.length}</span>
+          <span class="acc-arrow">▼</span>
+        </div>
+      </div>
+      <div class="accordion-body">
+        <div class="check-grid">
+          ${sg.words.map((w, wi) => {
+            const key = `${mi}_${gi}_${sgi}_${wi}`;
+            const c = checked.has(key) ? ' checked' : '';
+            return `<label class="check-item" title="${escHtml(w.pos)}">
+              <input type="checkbox"${c} onchange="toggleWord('${key}')">
+              <span>${escHtml(w.ja)}</span>
+            </label>`;
+          }).join('')}
+        </div>
+      </div>
+    </div>`;
+}
+
+function toggleAcc(key) {
+  if (openAccordions.has(key)) openAccordions.delete(key);
+  else openAccordions.add(key);
+  renderMajorContent();
+}
+
+function expandAll(open) {
+  if (!data.majors.length) return;
+  const m = data.majors[currentMajor];
+  if (open) {
+    m.groups.forEach((g, gi) => {
+      g.subgroups.forEach((_, sgi) => openAccordions.add(`${currentMajor}_${gi}_${sgi}`));
+    });
+  } else {
+    // 当該大分類のみ畳む
+    const prefix = `${currentMajor}_`;
+    for (const k of Array.from(openAccordions)) if (k.startsWith(prefix)) openAccordions.delete(k);
+  }
+  renderMajorContent();
+}
+
+function toggleWord(key) {
+  if (checked.has(key)) checked.delete(key);
+  else checked.add(key);
+  renderMajorTabs();
+  renderMajorContent();
+  updatePrompts();
+}
+
+function clearChecks() {
+  if (!checked.size) return;
+  if (!confirm('選択をすべてクリアしますか?')) return;
+  checked.clear();
+  renderMajorTabs();
+  renderMajorContent();
+  updatePrompts();
+}
+
+// --- プロンプト出力 ---
+function updatePrompts() {
+  const bp = [], bn = [], cp = [], cn = [];
+  for (const key of checked) {
+    const [mi, gi, sgi, wi] = key.split('_').map(Number);
+    const m = data.majors[mi]; if (!m) continue;
+    const g = m.groups[gi]; if (!g) continue;
+    const sg = g.subgroups[sgi]; if (!sg) continue;
+    const w = sg.words[wi]; if (!w) continue;
+    if (sg.side === 'chara') {
+      if (w.pos) cp.push(w.pos);
+      if (w.neg) cn.push(w.neg);
+    } else {
+      if (w.pos) bp.push(w.pos);
+      if (w.neg) bn.push(w.neg);
+    }
+  }
+  document.getElementById('out-base-pos').textContent = bp.join(', ') || '—';
+  document.getElementById('out-base-neg').textContent = bn.join(', ') || '—';
+  document.getElementById('out-chara-pos').textContent = cp.join(', ') || '—';
+  document.getElementById('out-chara-neg').textContent = cn.join(', ') || '—';
+}
+
+function copyText(id, btnId) {
+  const t = document.getElementById(id).textContent;
+  if (t === '—') return;
+  navigator.clipboard.writeText(t).catch(()=>{});
+  const btn = document.getElementById(btnId);
+  btn.textContent = 'コピーしました ✓';
+  btn.classList.add('done');
+  setTimeout(() => { btn.textContent = 'コピー'; btn.classList.remove('done'); }, 1500);
+}
+
+// --- テンプレート ---
+function saveTemplate() {
+  const nameInput = document.getElementById('template-name-input');
+  const name = nameInput.value.trim();
+  if (!name) { alert('テンプレート名を入力してください'); return; }
+  if (!checked.size) { alert('語句を1つ以上チェックしてください'); return; }
+  const keys = Array.from(checked);
+  const existing = data.templates.findIndex(t => t.name === name);
+  if (existing >= 0) {
+    if (!confirm(`「${name}」を上書きしますか?`)) return;
+    data.templates[existing].keys = keys;
+  } else {
+    data.templates.push({ name, keys });
+  }
+  nameInput.value = '';
+  renderTemplateList();
+}
+
+function loadTemplate(ti) {
+  const t = data.templates[ti];
+  if (!t) return;
+  checked = new Set(t.keys || []);
+  renderMajorTabs();
+  renderMajorContent();
+  updatePrompts();
+}
+
+function removeTemplate(ti) {
+  if (!confirm(`「${data.templates[ti].name}」を削除しますか?`)) return;
+  data.templates.splice(ti, 1);
+  renderTemplateList();
+}
+
+function renderTemplateList() {
+  const el = document.getElementById('template-list');
+  if (!data.templates.length) { el.innerHTML = '<span class="template-empty">テンプレートなし</span>'; return; }
+  el.innerHTML = data.templates.map((t, ti) => `
+    <div class="template-tag" onclick="loadTemplate(${ti})">
+      <span>${escHtml(t.name)}</span>
+      <button class="rm" onclick="event.stopPropagation();removeTemplate(${ti})">×</button>
+    </div>`).join('');
+}
+
+// --- 設定:語句追加 ---
+function updateAddMajorSelect() {
+  const sel = document.getElementById('add-major');
+  sel.innerHTML = data.majors.map((m, mi) => `<option value="${mi}">${escHtml(m.name)}</option>`).join('');
+  updateAddGroupSelect();
+}
+
+function updateAddGroupSelect() {
+  const sel = document.getElementById('add-group');
+  const mi = parseInt(document.getElementById('add-major').value, 10);
+  const m = data.majors[mi];
+  if (!m) { sel.innerHTML = ''; return; }
+  sel.innerHTML = m.groups.map((g, gi) => `<option value="${gi}">${escHtml(g.name)}</option>`).join('');
+  updateAddSubgroupSelect();
+}
+
+function updateAddSubgroupSelect() {
+  const sel = document.getElementById('add-subgroup');
+  const mi = parseInt(document.getElementById('add-major').value, 10);
+  const gi = parseInt(document.getElementById('add-group').value, 10);
+  const g = data.majors[mi] && data.majors[mi].groups[gi];
+  if (!g) { sel.innerHTML = ''; return; }
+  sel.innerHTML = g.subgroups.map((sg, sgi) => `<option value="${sgi}">${escHtml(sg.name)} (${sg.side === 'chara' ? 'キャラ' : 'ベース'})</option>`).join('');
+}
+
+function addWord() {
+  const mi = parseInt(document.getElementById('add-major').value, 10);
+  const gi = parseInt(document.getElementById('add-group').value, 10);
+  const sgi = parseInt(document.getElementById('add-subgroup').value, 10);
+  const ja = document.getElementById('word-ja').value.trim();
+  const pos = document.getElementById('word-pos').value.trim();
+  const neg = document.getElementById('word-neg').value.trim();
+  if (!ja || !pos) { alert('日本語表示とポジティブは必須です'); return; }
+  const sg = data.majors[mi] && data.majors[mi].groups[gi] && data.majors[mi].groups[gi].subgroups[sgi];
+  if (!sg) { alert('登録先が見つかりません'); return; }
+  const w = { ja, pos };
+  if (neg) w.neg = neg;
+  sg.words.push(w);
+  document.getElementById('word-ja').value = '';
+  document.getElementById('word-pos').value = '';
+  document.getElementById('word-neg').value = '';
+  const toast = document.getElementById('add-toast');
+  toast.style.display = 'block';
+  setTimeout(() => toast.style.display = 'none', 1500);
+  renderWordList();
+  renderMajorContent();
+}
+
+function renderWordList() {
+  const el = document.getElementById('word-list-wrap');
+  if (!data.majors.length) { el.innerHTML = '<div class="word-empty">語句未登録</div>'; return; }
+  let html = '';
+  let total = 0;
+  data.majors.forEach((m, mi) => {
+    let majorTotal = 0;
+    m.groups.forEach(g => g.subgroups.forEach(sg => majorTotal += sg.words.length));
+    if (!majorTotal) return;
+    total += majorTotal;
+    html += `<div class="word-major-section"><div class="word-major-title">${escHtml(m.name)} (${majorTotal})</div>`;
+    m.groups.forEach((g, gi) => {
+      g.subgroups.forEach((sg, sgi) => {
+        if (!sg.words.length) return;
+        html += `<div class="word-cat-section">
+          <div class="word-cat-title">${escHtml(g.name)} › ${escHtml(sg.name)}</div>
+          <div class="word-tags">
+            ${sg.words.map((w, wi) => `<div class="word-tag">
+              <span title="${escHtml(w.pos)}">${escHtml(w.ja)}</span>
+              <button class="rm" onclick="removeWord(${mi},${gi},${sgi},${wi})">×</button>
+            </div>`).join('')}
+          </div>
+        </div>`;
+      });
+    });
+    html += '</div>';
+  });
+  el.innerHTML = total ? html : '<div class="word-empty">語句未登録</div>';
+}
+
+function removeWord(mi, gi, sgi, wi) {
+  const sg = data.majors[mi] && data.majors[mi].groups[gi] && data.majors[mi].groups[gi].subgroups[sgi];
+  if (!sg) return;
+  if (!confirm(`「${sg.words[wi].ja}」を削除しますか?`)) return;
+  sg.words.splice(wi, 1);
+  // チェック状態とテンプレ内のキーを補正
+  const removed = `${mi}_${gi}_${sgi}_${wi}`;
+  checked.delete(removed);
+  // 後ろのwiをずらす
+  const newChecked = new Set();
+  for (const k of checked) {
+    const p = k.split('_').map(Number);
+    if (p[0] === mi && p[1] === gi && p[2] === sgi && p[3] > wi) p[3]--;
+    newChecked.add(p.join('_'));
+  }
+  checked = newChecked;
+  data.templates.forEach(t => {
+    t.keys = (t.keys || []).filter(k => k !== removed).map(k => {
+      const p = k.split('_').map(Number);
+      if (p[0] === mi && p[1] === gi && p[2] === sgi && p[3] > wi) p[3]--;
+      return p.join('_');
+    });
+  });
+  renderWordList();
+  renderMajorTabs();
+  renderMajorContent();
+  updatePrompts();
+}
+
+// --- 上タブ切替 ---
+function switchTab(t) {
+  document.querySelectorAll('.tabs > .tab').forEach((el,i) =>
+    el.classList.toggle('active', (i===0 && t==='generate') || (i===1 && t==='settings'))
+  );
+  document.getElementById('screen-generate').classList.toggle('active', t==='generate');
+  document.getElementById('screen-settings').classList.toggle('active', t==='settings');
+  if (t==='settings') {
+    updateAddMajorSelect();
+    renderWordList();
+    renderHeaderImgList();
+    renderMiniImgList();
+  }
+}
+
+// --- スライドショー/ミニキャラ ---
+function goSlide(n) {
+  document.querySelectorAll('#slideshow .slide').forEach((s,i) => s.classList.toggle('active', i===n));
+  document.querySelectorAll('#slide-dots .sdot').forEach((d,i) => d.classList.toggle('active', i===n));
+  currentSlide = n;
+}
+function startSlideshow() {
+  if (slideTimer) clearInterval(slideTimer);
+  if (data.headerImgs.length <= 1) return;
+  slideTimer = setInterval(() => goSlide((currentSlide+1) % data.headerImgs.length), 3000);
+}
+function rebuildSlideshow() {
+  const ss = document.getElementById('slideshow');
+  ss.querySelectorAll('.slide').forEach(s => s.remove());
+  const dotsEl = document.getElementById('slide-dots');
+  dotsEl.innerHTML = '';
+  if (!data.headerImgs.length) {
+    const ph = document.createElement('div');
+    ph.className = 'slide active';
+    ph.innerHTML = '<div class="slide-placeholder">✦ ✧ ✦</div>';
+    ss.insertBefore(ph, dotsEl);
+    return;
+  }
+  data.headerImgs.forEach((fname, i) => {
+    const d = document.createElement('div');
+    d.className = 'slide'+(i===0?' active':'');
+    d.innerHTML = `<img src="images/${escHtml(fname)}" alt="">`;
+    ss.insertBefore(d, dotsEl);
+    const btn = document.createElement('button');
+    btn.className = 'sdot'+(i===0?' active':'');
+    btn.onclick = () => goSlide(i);
+    dotsEl.appendChild(btn);
+  });
+  currentSlide = 0; startSlideshow();
+}
+function rebuildMiniCharas() {
+  const container = document.getElementById('mini-chara-container');
+  container.innerHTML = '';
+  if (!data.miniImgs.length) return;
+  const size = 144, margin = 16;
+  const vh = window.innerHeight;
+  const contentW = Math.min(1300, window.innerWidth);
+  const sideW = (window.innerWidth - contentW) / 2;
+  const positions = [];
+  data.miniImgs.forEach((fname, idx) => {
+    let x, y, tries = 0, ok = false;
+    while (tries < 60 && !ok) {
+      const side = Math.random() < 0.5 ? 'left' : 'right';
+      if (side === 'left' && sideW > size + margin*2) {
+        x = margin + Math.random() * (sideW - size - margin*2);
+      } else if (side === 'right' && sideW > size + margin*2) {
+        x = window.innerWidth - sideW + margin + Math.random() * (sideW - size - margin*2);
+      } else {
+        x = margin + Math.random() * (window.innerWidth - size - margin*2);
+      }
+      y = margin + Math.random() * (vh - size - margin*2);
+      ok = positions.every(p => Math.hypot(p.x-x, p.y-y) > size + 20);
+      tries++;
+    }
+    positions.push({x, y});
+    const el = document.createElement('div');
+    el.className = 'mini-chara ' + floatClasses[idx % floatClasses.length];
+    el.style.cssText = `left:${Math.round(x)}px;top:${Math.round(y)}px;animation-delay:${(idx*0.8).toFixed(1)}s;`;
+    el.innerHTML = fname ? `<img src="images/${escHtml(fname)}" alt="">` : '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:32px;color:#c090e0;">✦</div>';
+    container.appendChild(el);
+  });
+}
+function renderHeaderImgList() {
+  const el = document.getElementById('header-img-list');
+  if (!data.headerImgs.length) { el.innerHTML = '<div style="font-size:11px;color:#d4b0e8;margin-bottom:7px;">画像未設定</div>'; return; }
+  el.innerHTML = data.headerImgs.map((fname, i) => `
+    <div class="img-row">
+      <div class="img-thumb-small"><img src="images/${escHtml(fname)}" alt="" onerror="this.outerHTML='?'"></div>
+      <input class="img-name-input" type="text" value="${escHtml(fname)}" placeholder="例: header1.png" onchange="data.headerImgs[${i}]=this.value.trim();rebuildSlideshow();">
+      <button class="del-btn" onclick="data.headerImgs.splice(${i},1);renderHeaderImgList();rebuildSlideshow();">×</button>
+    </div>`).join('');
+}
+function renderMiniImgList() {
+  const el = document.getElementById('mini-img-list');
+  if (!data.miniImgs.length) { el.innerHTML = '<div style="font-size:11px;color:#d4b0e8;margin-bottom:7px;">画像未設定</div>'; return; }
+  el.innerHTML = data.miniImgs.map((fname, i) => `
+    <div class="img-row">
+      <div class="img-thumb-small"><img src="images/${escHtml(fname)}" alt="" onerror="this.outerHTML='?'"></div>
+      <input class="img-name-input" type="text" value="${escHtml(fname)}" placeholder="例: mini1.png" onchange="data.miniImgs[${i}]=this.value.trim();rebuildMiniCharas();">
+      <button class="del-btn" onclick="data.miniImgs.splice(${i},1);renderMiniImgList();rebuildMiniCharas();">×</button>
+    </div>`).join('');
+}
+function addHeaderImg() { data.headerImgs.push(''); renderHeaderImgList(); }
+function addMiniImg() { data.miniImgs.push(''); renderMiniImgList(); }
+
+// --- データ管理 ---
+async function saveJSON() {
+  const btn = document.querySelector('.data-btn.save');
+  try {
+    const res = await fetch('/api/save', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    });
+    if ((await res.json()).ok) {
+      const orig = btn.textContent;
+      btn.textContent = '保存しました ✓';
+      setTimeout(() => btn.textContent = orig, 1500);
+    } else { alert('保存に失敗しました'); }
+  } catch {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));
+    a.download = 'prompt-data.json';
+    a.click();
+  }
+}
+function loadJSON(e) {
+  const f = e.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = ev => {
+    try {
+      applyData(JSON.parse(ev.target.result));
+      alert('データを読み込みました');
+    } catch { alert('JSONの読み込みに失敗しました'); }
+  };
+  r.readAsText(f);
+}
+function applyData(d) {
+  data = d || {};
+  if (!Array.isArray(data.majors)) data.majors = [];
+  if (!Array.isArray(data.templates)) data.templates = [];
+  if (!Array.isArray(data.headerImgs)) data.headerImgs = [];
+  if (!Array.isArray(data.miniImgs)) data.miniImgs = [];
+  currentMajor = 0;
+  checked = new Set();
+  openAccordions = new Set();
+  renderMajorTabs();
+  renderMajorContent();
+  renderTemplateList();
+  rebuildSlideshow();
+  rebuildMiniCharas();
+  updatePrompts();
+}
+async function autoLoad() {
+  try {
+    const res = await fetch('/api/load');
+    applyData(await res.json());
+  } catch {
+    applyData({});
+  }
+}
+window.addEventListener('resize', rebuildMiniCharas);
+autoLoad();
+</script>
+</body>
+</html>

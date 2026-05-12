@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magis Image Editor v5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=M+PLUS+Rounded+1c:wght@400;700&family=Dela+Gothic+One&family=Zen+Maru+Gothic&family=Kosugi+Maru&family=RocknRoll+One&family=Stick&family=DotGothic16&family=Shippori+Mincho&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: sans-serif; background: #1a1a1a; color: #eee; display: flex; flex-direction: column; height: 100vh; overflow: hidden; font-size: 14px; }
+
+#toolbar {
+    background: #2a2a2a;
+    padding: 7px 12px;
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom: 1px solid #444;
+    flex-shrink: 0;
+    min-height: 44px;
+}
+
+.sep { width: 1px; height: 24px; background: #555; margin: 0 2px; flex-shrink: 0; }
+
+.btn {
+    padding: 6px 12px;
+    cursor: pointer;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background: #3a3a3a;
+    color: #eee;
+    font-size: 13px;
+    transition: background 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.btn:hover { background: #505050; }
+.btn-blue { background: #1a5fa8; border-color: #2a7fd4; }
+.btn-blue:hover { background: #2a7fd4; }
+.btn-red { background: #7a1a1a; border-color: #b03030; }
+.btn-red:hover { background: #b03030; }
+.btn-active { background: #007a44; border-color: #00cc77; color: #fff; }
+.btn-active:hover { background: #009955; }
+
+.lbl { font-size: 13px; color: #aaa; white-space: nowrap; flex-shrink: 0; }
+
+select, input[type="text"] {
+    padding: 5px 7px;
+    border-radius: 4px;
+    border: 1px solid #555;
+    background: #3a3a3a;
+    color: #eee;
+    font-size: 13px;
+}
+
+#zoom-bar {
+    background: #222;
+    padding: 5px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #444;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+#zoomSlider { width: 140px; accent-color: #2a7fd4; }
+#snapSlider  { width: 100px; accent-color: #2a7fd4; }
+
+#main-area { flex: 1; display: flex; overflow: hidden; }
+
+#canvas-container {
+    flex: 1;
+    overflow: auto;
+    background: #111;
+    position: relative;
+}
+
+#canvas-outer {
+    transform-origin: top left;
+    position: absolute;
+    top: 0; left: 0;
+}
+
+#side-panel {
+    width: 230px;
+    background: #232323;
+    border-left: 1px solid #444;
+    flex-shrink: 0;
+    display: none;
+    flex-direction: column;
+    overflow-y: auto;
+}
+#side-panel.visible { display: flex; }
+
+.panel-section { padding: 10px 12px; border-bottom: 1px solid #333; }
+.panel-title { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+.panel-row { display: flex; align-items: center; gap: 6px; margin-bottom: 7px; }
+.panel-row:last-child { margin-bottom: 0; }
+.panel-lbl { font-size: 12px; color: #bbb; white-space: nowrap; min-width: 52px; }
+.panel-input { padding: 4px 6px; border-radius: 4px; border: 1px solid #555; background: #3a3a3a; color: #eee; font-size: 12px; flex: 1; min-width: 0; }
+.color-btn { width: 32px; height: 26px; border-radius: 4px; border: 1px solid #666; cursor: pointer; flex-shrink: 0; padding: 2px; }
+input[type="range"] { accent-color: #2a7fd4; flex: 1; }
+.range-val { font-size: 12px; color: #aaa; min-width: 26px; text-align: right; }
+
+#info-bar {
+    background: #222;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: #888;
+    border-top: 1px solid #444;
+    flex-shrink: 0;
+    display: flex;
+    gap: 20px;
+}
+#info-frame { color: #00ccff; font-weight: bold; }
+#info-mode  { color: #00cc77; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<div id="toolbar">
+    <input type="file" id="imageLoader" accept="image/*" multiple style="display:none">
+    <button class="btn btn-blue" onclick="document.getElementById('imageLoader').click()">画像を追加</button>
+    <button class="btn" onclick="addText()">テキスト追加</button>
+
+    <div class="sep"></div>
+
+    <span class="lbl">出力プリセット：</span>
+    <select id="aspectRatio" onchange="applyPreset()">
+        <option value="16:9">16:9 (YouTube)</option>
+        <option value="4:3">4:3</option>
+        <option value="1:1">1:1 (SNS)</option>
+        <option value="9:16">9:16 (Shorts)</option>
+        <option value="custom">カスタム</option>
+    </select>
+
+    <div class="sep"></div>
+
+    <button class="btn" id="frameEditBtn" onclick="toggleFrameEdit()">枠編集</button>
+
+    <div class="sep"></div>
+
+    <span class="lbl">背景：</span>
+    <button class="btn" id="bgToggleBtn" onclick="toggleBg()">透過</button>
+    <input type="color" id="bgColorInput" value="#ffffff" onchange="setBgColor(this.value)"
+        style="display:none;width:32px;height:28px;padding:2px;border-radius:4px;border:1px solid #555;cursor:pointer;background:none;">
+
+    <div class="sep"></div>
+
+    <div class="sep"></div>
+
+    <span class="lbl">背景除去：</span>
+    <input type="color" id="chromaKeyColor" value="#ffffff"
+        style="width:32px;height:28px;padding:2px;border-radius:4px;border:1px solid #555;cursor:pointer;background:none;"
+        title="除去する色">
+    <button class="btn" id="eyedropperBtn" onclick="startEyeDropper()" title="スポイト">🎨</button>
+    <span class="lbl">閾値：</span>
+    <input type="range" id="chromaThreshold" min="0" max="120" value="30" step="1"
+        style="width:80px;accent-color:#2a7fd4;"
+        oninput="document.getElementById('chromaThresholdVal').textContent=this.value">
+    <span style="font-size:12px;color:#aaa;min-width:24px;" id="chromaThresholdVal">30</span>
+    <button class="btn" id="chromaToggleBtn" onclick="toggleChromaKey()">除去ON</button>
+
+    <div class="sep"></div>
+
+    <button class="btn" onclick="moveLayer('front')">最前面</button>
+    <button class="btn" onclick="moveLayer('back')">最背面</button>
+    <button class="btn btn-red" onclick="deleteObject()">削除</button>
+
+    <div style="margin-left:auto;display:flex;gap:6px;align-items:center;flex-shrink:0;">
+        <input type="text" id="fileName" value="thumbnail" style="width:110px;">
+        <span class="lbl">.png</span>
+        <button class="btn btn-blue" onclick="saveImage()">保存（枠内）</button>
+    </div>
+</div>
+
+<div id="zoom-bar">
+    <span class="lbl">表示倍率：</span>
+    <input type="range" id="zoomSlider" min="20" max="150" value="100" step="5" oninput="applyZoom(this.value)">
+    <span id="zoomVal" style="font-size:12px;color:#aaa;min-width:36px;">100%</span>
+    <button class="btn" style="padding:4px 10px;font-size:12px;" onclick="resetZoom()">100%</button>
+
+    <div class="sep"></div>
+
+    <span class="lbl">スナップ距離：</span>
+    <input type="range" id="snapSlider" min="0" max="60" value="20" step="5" oninput="document.getElementById('snapVal').textContent=this.value+'px'">
+    <span id="snapVal" style="font-size:12px;color:#aaa;min-width:36px;">20px</span>
+</div>
+
+<div id="main-area">
+    <div id="canvas-container">
+        <div id="canvas-outer">
+            <canvas id="mainCanvas"></canvas>
+        </div>
+    </div>
+
+    <div id="side-panel">
+        <div class="panel-section">
+            <div class="panel-title">フォント</div>
+            <div class="panel-row">
+                <select class="panel-input" id="fontFamily" onchange="applyTextProp('fontFamily', this.value)">
+                    <option value="Noto Sans JP">Noto Sans JP</option>
+                    <option value="Noto Serif JP">Noto Serif JP</option>
+                    <option value="M PLUS Rounded 1c">M PLUS Rounded</option>
+                    <option value="Dela Gothic One">Dela Gothic One</option>
+                    <option value="Zen Maru Gothic">Zen Maru Gothic</option>
+                    <option value="Kosugi Maru">Kosugi Maru</option>
+                    <option value="RocknRoll One">RocknRoll One</option>
+                    <option value="Stick">Stick</option>
+                    <option value="DotGothic16">DotGothic16</option>
+                    <option value="Shippori Mincho">Shippori Mincho</option>
+                    <option value="sans-serif">システム ゴシック</option>
+                    <option value="serif">システム 明朝</option>
+                </select>
+            </div>
+            <div class="panel-row">
+                <span class="panel-lbl">サイズ</span>
+                <input type="number" class="panel-input" id="fontSize" value="48" min="8" max="400"
+                    onchange="applyTextProp('fontSize', parseInt(this.value))" style="width:70px;flex:none;">
+            </div>
+        </div>
+
+        <div class="panel-section">
+            <div class="panel-title">文字色</div>
+            <div class="panel-row">
+                <span class="panel-lbl">色</span>
+                <input type="color" class="color-btn" id="fillColor" value="#ffffff" onchange="applyTextProp('fill', this.value)">
+            </div>
+        </div>
+
+        <div class="panel-section">
+            <div class="panel-title">ふちどり</div>
+            <div class="panel-row">
+                <span class="panel-lbl">色</span>
+                <input type="color" class="color-btn" id="strokeColor" value="#000000" onchange="applyStroke()">
+            </div>
+            <div class="panel-row">
+                <span class="panel-lbl">太さ</span>
+                <input type="range" id="strokeWidth" min="0" max="20" value="0" step="1"
+                    oninput="document.getElementById('strokeWidthVal').textContent=this.value; applyStroke()">
+                <span class="range-val" id="strokeWidthVal">0</span>
+            </div>
+        </div>
+
+        <div class="panel-section">
+            <div class="panel-title">シャドウ</div>
+            <div class="panel-row">
+                <span class="panel-lbl">色</span>
+                <input type="color" class="color-btn" id="shadowColor" value="#000000" onchange="applyShadow()">
+            </div>
+            <div class="panel-row">
+                <span class="panel-lbl">ぼかし</span>
+                <input type="range" id="shadowBlur" min="0" max="40" value="0" step="1"
+                    oninput="document.getElementById('shadowBlurVal').textContent=this.value; applyShadow()">
+                <span class="range-val" id="shadowBlurVal">0</span>
+            </div>
+            <div class="panel-row">
+                <span class="panel-lbl">横ずれ</span>
+                <input type="range" id="shadowOffsetX" min="-30" max="30" value="0" step="1"
+                    oninput="document.getElementById('shadowOffsetXVal').textContent=this.value; applyShadow()">
+                <span class="range-val" id="shadowOffsetXVal">0</span>
+            </div>
+            <div class="panel-row">
+                <span class="panel-lbl">縦ずれ</span>
+                <input type="range" id="shadowOffsetY" min="-30" max="30" value="0" step="1"
+                    oninput="document.getElementById('shadowOffsetYVal').textContent=this.value; applyShadow()">
+                <span class="range-val" id="shadowOffsetYVal">0</span>
+            </div>
+        </div>
+
+        <div class="panel-section">
+            <div class="panel-title">操作</div>
+            <button class="btn" style="width:100%;" onclick="duplicateText()">テキストを複製</button>
+        </div>
+    </div>
+</div>
+
+<div id="info-bar">
+    <span>作業スペース：2560 × 1920px</span>
+    <span id="info-frame">出力枠：1280 × 720px</span>
+    <span id="info-mode"></span>
+    <span id="info-obj" style="color:#aaa;"></span>
+</div>
+
+<script>
+const FRAME_SIZES = {
+    '16:9': { w: 1280, h: 720 },
+    '4:3':  { w: 1280, h: 960 },
+    '1:1':  { w: 1280, h: 1280 },
+    '9:16': { w: 720,  h: 1280 }
+};
+
+const WORKSPACE_W = 2560;
+const WORKSPACE_H = 1920;
+
+let bgMode = 'transparent';
+let bgColor = '#ffffff';
+let frameRect = null;
+let currentZoom = 100;
+let frameW = 1280;
+let frameH = 720;
+let frameEditMode = false;
+
+const canvas = new fabric.Canvas('mainCanvas', {
+    backgroundColor: null,
+    preserveObjectStacking: true,
+    width: WORKSPACE_W,
+    height: WORKSPACE_H
+});
+
+function getSnapDist() { return parseInt(document.getElementById('snapSlider').value); }
+function getFrameLeft() { return (WORKSPACE_W - frameW) / 2; }
+function getFrameTop()  { return (WORKSPACE_H - frameH) / 2; }
+
+function updateInfoFrame() {
+    document.getElementById('info-frame').textContent =
+        '出力枠：' + Math.round(frameW) + ' × ' + Math.round(frameH) + 'px';
+}
+
+function setFrameSelectable(flag) {
+    if (!frameRect) return;
+    frameRect.set({
+        selectable: flag,
+        evented: flag,
+        hoverCursor: flag ? 'move' : 'default'
+    });
+    canvas.discardActiveObject();
+    canvas.renderAll();
+}
+
+function setContentSelectable(flag) {
+    canvas.getObjects().forEach(function(obj) {
+        if (obj.name === 'frame') return;
+        obj.set({ selectable: flag, evented: flag });
+    });
+    canvas.renderAll();
+}
+
+function toggleFrameEdit() {
+    frameEditMode = !frameEditMode;
+    const btn = document.getElementById('frameEditBtn');
+    const modeInfo = document.getElementById('info-mode');
+
+    if (frameEditMode) {
+        btn.classList.add('btn-active');
+        btn.textContent = '枠編集中';
+        modeInfo.textContent = '【枠編集モード】枠をドラッグでリサイズ';
+        setFrameSelectable(true);
+        setContentSelectable(false);
+        canvas.setActiveObject(frameRect);
+        canvas.renderAll();
+    } else {
+        btn.classList.remove('btn-active');
+        btn.textContent = '枠編集';
+        modeInfo.textContent = '';
+        setFrameSelectable(false);
+        setContentSelectable(true);
+        canvas.discardActiveObject();
+        canvas.renderAll();
+    }
+}
+
+function buildFrame() {
+    if (frameRect) canvas.remove(frameRect);
+
+    frameRect = new fabric.Rect({
+        left: getFrameLeft(),
+        top: getFrameTop(),
+        width: frameW,
+        height: frameH,
+        fill: 'transparent',
+        stroke: '#00ccff',
+        strokeWidth: 3,
+        strokeDashArray: [14, 8],
+        hasRotatingPoint: false,
+        lockRotation: true,
+        lockMovementX: true,
+        lockMovementY: true,
+        lockSkewingX: true,
+        lockSkewingY: true,
+        cornerColor: '#00ccff',
+        cornerStrokeColor: '#0099bb',
+        cornerSize: 14,
+        transparentCorners: false,
+        selectable: false,
+        evented: false,
+        hoverCursor: 'default',
+        name: 'frame'
+    });
+
+    frameRect.setControlsVisibility({
+        mt: true, mb: true, ml: true, mr: true,
+        tl: true, tr: true, bl: true, br: true,
+        mtr: false
+    });
+
+    canvas.add(frameRect);
+    frameRect.bringToFront();
+    canvas.renderAll();
+    updateInfoFrame();
+}
+
+canvas.on('object:scaling', function(e) {
+    const obj = e.target;
+    if (!obj || obj.name !== 'frame') return;
+
+    const newW = Math.round(obj.width * obj.scaleX);
+    const newH = Math.round(obj.height * obj.scaleY);
+    frameW = Math.max(100, newW);
+    frameH = Math.max(100, newH);
+
+    obj.set({
+        width: frameW,
+        height: frameH,
+        scaleX: 1,
+        scaleY: 1,
+        left: getFrameLeft(),
+        top: getFrameTop()
+    });
+
+    document.getElementById('aspectRatio').value = 'custom';
+    updateInfoFrame();
+    canvas.renderAll();
+});
+
+canvas.on('object:modified', function(e) {
+    if (e.target && e.target.name === 'frame') {
+        frameRect.bringToFront();
+        canvas.renderAll();
+    }
+});
+
+canvas.on('object:moving', function(e) {
+    const obj = e.target;
+    if (!obj || obj.name === 'frame') return;
+
+    const snap = getSnapDist();
+    if (snap === 0) return;
+
+    const fl = getFrameLeft();
+    const ft = getFrameTop();
+    const fr = fl + frameW;
+    const fb = ft + frameH;
+    const objW = obj.getScaledWidth();
+    const objH = obj.getScaledHeight();
+
+    let l = obj.left;
+    let t = obj.top;
+
+    if (Math.abs(l - fl) < snap)        l = fl;
+    if (Math.abs(l + objW - fr) < snap) l = fr - objW;
+    if (Math.abs(t - ft) < snap)        t = ft;
+    if (Math.abs(t + objH - fb) < snap) t = fb - objH;
+
+    obj.set({ left: l, top: t });
+});
+
+function applyZoom(val) {
+    currentZoom = parseInt(val);
+    document.getElementById('zoomVal').textContent = currentZoom + '%';
+    const scale = currentZoom / 100;
+    const outer = document.getElementById('canvas-outer');
+    outer.style.width = WORKSPACE_W + 'px';
+    outer.style.height = WORKSPACE_H + 'px';
+    outer.style.transform = 'scale(' + scale + ')';
+    outer.style.transformOrigin = 'top left';
+
+    const container = document.getElementById('canvas-container');
+    const frameCX = getFrameLeft() + frameW / 2;
+    const frameCY = getFrameTop()  + frameH / 2;
+    const scrollX = frameCX * scale - container.clientWidth  / 2;
+    const scrollY = frameCY * scale - container.clientHeight / 2;
+    setTimeout(function() {
+        container.scrollLeft = Math.max(0, scrollX);
+        container.scrollTop  = Math.max(0, scrollY);
+    }, 0);
+}
+
+function resetZoom() {
+    document.getElementById('zoomSlider').value = 100;
+    applyZoom(100);
+}
+
+function applyPreset() {
+    const val = document.getElementById('aspectRatio').value;
+    if (val === 'custom') return;
+    const size = FRAME_SIZES[val];
+    frameW = size.w;
+    frameH = size.h;
+    const wasEditMode = frameEditMode;
+    if (wasEditMode) { frameEditMode = false; }
+    buildFrame();
+    if (wasEditMode) { toggleFrameEdit(); }
+    applyZoom(currentZoom);
+}
+
+function toggleBg() {
+    const btn = document.getElementById('bgToggleBtn');
+    const ci  = document.getElementById('bgColorInput');
+    if (bgMode === 'transparent') {
+        bgMode = 'solid';
+        btn.textContent = '単色';
+        ci.style.display = 'inline-block';
+        canvas.setBackgroundColor(bgColor, canvas.renderAll.bind(canvas));
+    } else {
+        bgMode = 'transparent';
+        btn.textContent = '透過';
+        ci.style.display = 'none';
+        canvas.setBackgroundColor(null, canvas.renderAll.bind(canvas));
+    }
+}
+
+function setBgColor(color) {
+    bgColor = color;
+    if (bgMode === 'solid') canvas.setBackgroundColor(bgColor, canvas.renderAll.bind(canvas));
+}
+
+document.getElementById('imageLoader').onchange = function(e) {
+    Array.from(e.target.files).forEach(function(file, idx) {
+        const index = idx;
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+            const imgEl = new Image();
+            imgEl.src = ev.target.result;
+            imgEl.onload = function() {
+                const image = new fabric.Image(imgEl);
+                image.set({
+                    left: (WORKSPACE_W - imgEl.width)  / 2 + index * 20,
+                    top:  (WORKSPACE_H - imgEl.height) / 2 + index * 20,
+                    selectable: !frameEditMode,
+                    evented:    !frameEditMode
+                });
+                canvas.add(image);
+                canvas.setActiveObject(image);
+                frameRect.bringToFront();
+                canvas.renderAll();
+            };
+        };
+        reader.readAsDataURL(file);
+    });
+    e.target.value = '';
+};
+
+function addText() {
+    const text = new fabric.IText('テキストを入力', {
+        left: getFrameLeft() + 40,
+        top:  getFrameTop()  + 40,
+        fontFamily: 'Noto Sans JP',
+        fill: '#ffffff',
+        fontSize: 48,
+        selectable: !frameEditMode,
+        evented:    !frameEditMode
+    });
+    canvas.add(text);
+    canvas.setActiveObject(text);
+    frameRect.bringToFront();
+    canvas.renderAll();
+}
+
+function moveLayer(direction) {
+    const obj = canvas.getActiveObject();
+    if (!obj || obj.name === 'frame') return;
+    if (direction === 'front') { obj.bringToFront(); frameRect.bringToFront(); }
+    if (direction === 'back')  obj.sendToBack();
+    canvas.renderAll();
+}
+
+function deleteObject() {
+    const objs = canvas.getActiveObjects().filter(function(o){ return o.name !== 'frame'; });
+    if (!objs.length) return;
+    canvas.discardActiveObject();
+    objs.forEach(function(o) { canvas.remove(o); });
+    canvas.renderAll();
+}
+
+function applyTextProp(prop, value) {
+    const obj = canvas.getActiveObject();
+    if (!obj || obj.type !== 'i-text') return;
+    obj.set(prop, value);
+    canvas.renderAll();
+}
+
+function applyStroke() {
+    const obj = canvas.getActiveObject();
+    if (!obj || obj.type !== 'i-text') return;
+    const color = document.getElementById('strokeColor').value;
+    const width = parseInt(document.getElementById('strokeWidth').value);
+    obj.set({ stroke: width > 0 ? color : null, strokeWidth: width });
+    canvas.renderAll();
+}
+
+function applyShadow() {
+    const obj = canvas.getActiveObject();
+    if (!obj || obj.type !== 'i-text') return;
+    const blur = parseInt(document.getElementById('shadowBlur').value);
+    const ox   = parseInt(document.getElementById('shadowOffsetX').value);
+    const oy   = parseInt(document.getElementById('shadowOffsetY').value);
+    const color = document.getElementById('shadowColor').value;
+    obj.set('shadow', (blur === 0 && ox === 0 && oy === 0)
+        ? null
+        : new fabric.Shadow({ color, blur, offsetX: ox, offsetY: oy }));
+    canvas.renderAll();
+}
+
+function duplicateText() {
+    const obj = canvas.getActiveObject();
+    if (!obj || obj.type !== 'i-text') return;
+    obj.clone(function(cloned) {
+        cloned.set({ left: obj.left + 20, top: obj.top + 20 });
+        canvas.add(cloned);
+        canvas.setActiveObject(cloned);
+        frameRect.bringToFront();
+        canvas.renderAll();
+    });
+}
+
+function syncPanel(obj) {
+    if (!obj || obj.type !== 'i-text') {
+        document.getElementById('side-panel').classList.remove('visible');
+        return;
+    }
+    document.getElementById('side-panel').classList.add('visible');
+    document.getElementById('fontFamily').value   = obj.fontFamily  || 'Noto Sans JP';
+    document.getElementById('fontSize').value     = obj.fontSize    || 48;
+    document.getElementById('fillColor').value    = obj.fill        || '#ffffff';
+    document.getElementById('strokeColor').value  = obj.stroke      || '#000000';
+    document.getElementById('strokeWidth').value  = obj.strokeWidth || 0;
+    document.getElementById('strokeWidthVal').textContent = obj.strokeWidth || 0;
+    const sh = obj.shadow;
+    document.getElementById('shadowColor').value        = sh ? (sh.color   || '#000000') : '#000000';
+    document.getElementById('shadowBlur').value         = sh ? (sh.blur    || 0) : 0;
+    document.getElementById('shadowBlurVal').textContent= sh ? (sh.blur    || 0) : 0;
+    document.getElementById('shadowOffsetX').value      = sh ? (sh.offsetX || 0) : 0;
+    document.getElementById('shadowOffsetXVal').textContent = sh ? (sh.offsetX || 0) : 0;
+    document.getElementById('shadowOffsetY').value      = sh ? (sh.offsetY || 0) : 0;
+    document.getElementById('shadowOffsetYVal').textContent = sh ? (sh.offsetY || 0) : 0;
+}
+
+canvas.on('selection:created', function(e) { syncPanel(e.selected[0]); });
+canvas.on('selection:updated', function(e) { syncPanel(e.selected[0]); });
+canvas.on('selection:cleared', function()  {
+    document.getElementById('side-panel').classList.remove('visible');
+});
+
+function saveImage() {
+    const fl = getFrameLeft();
+    const ft = getFrameTop();
+
+    frameRect.set('opacity', 0);
+    canvas.renderAll();
+
+    const dataURL = canvas.toDataURL({
+        format: 'png', quality: 1,
+        left: fl, top: ft,
+        width: Math.round(frameW), height: Math.round(frameH)
+    });
+
+    frameRect.set('opacity', 1);
+    canvas.renderAll();
+
+    const fileName = document.getElementById('fileName').value || 'thumbnail';
+    const link = document.createElement('a');
+    link.download = fileName + '.png';
+    link.href = dataURL;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+// 除去状態管理
+let chromaActive = false;
+// 元画像保持マップ: fabricオブジェクトのid → 元画像DataURL
+const originalImageMap = new Map();
+let chromaObjId = 0;
+
+function getObjId(obj) {
+    if (!obj._chromaId) obj._chromaId = ++chromaObjId;
+    return obj._chromaId;
+}
+
+function toggleChromaKey() {
+    const obj = canvas.getActiveObject();
+    if (!obj || obj.type !== 'image') {
+        alert('画像を選択してから実行してください。');
+        return;
+    }
+
+    const btn = document.getElementById('chromaToggleBtn');
+
+    if (!chromaActive) {
+        // ON：元画像を保存してから除去実行
+        const id = getObjId(obj);
+        const imgEl = obj.getElement();
+        const offOrig = document.createElement('canvas');
+        offOrig.width  = imgEl.naturalWidth  || imgEl.width;
+        offOrig.height = imgEl.naturalHeight || imgEl.height;
+        const ctxOrig = offOrig.getContext('2d');
+        ctxOrig.drawImage(imgEl, 0, 0);
+        originalImageMap.set(id, offOrig.toDataURL('image/png'));
+
+        applyChromaKeyToObj(obj, function(newObj) {
+            newObj._chromaId = id;
+            chromaActive = true;
+            btn.textContent = '除去OFF';
+            btn.classList.add('btn-active');
+        });
+    } else {
+        // OFF：元画像に戻す
+        const id = getObjId(obj);
+        const origSrc = originalImageMap.get(id);
+        if (!origSrc) {
+            chromaActive = false;
+            btn.textContent = '除去ON';
+            btn.classList.remove('btn-active');
+            return;
+        }
+        const restoreImg = new Image();
+        restoreImg.onload = function() {
+            const restored = new fabric.Image(restoreImg, {
+                left:     obj.left,
+                top:      obj.top,
+                scaleX:   obj.scaleX,
+                scaleY:   obj.scaleY,
+                angle:    obj.angle,
+                flipX:    obj.flipX,
+                flipY:    obj.flipY,
+                originX:  obj.originX,
+                originY:  obj.originY,
+                selectable: obj.selectable,
+                evented:    obj.evented
+            });
+            restored._chromaId = id;
+            canvas.remove(obj);
+            canvas.add(restored);
+            canvas.setActiveObject(restored);
+            frameRect.bringToFront();
+            canvas.renderAll();
+            chromaActive = false;
+            btn.textContent = '除去ON';
+            btn.classList.remove('btn-active');
+        };
+        restoreImg.src = origSrc;
+    }
+}
+
+function applyChromaKeyToObj(obj, callback) {
+    const colorHex = document.getElementById('chromaKeyColor').value;
+    const threshold = parseInt(document.getElementById('chromaThreshold').value);
+
+    const tr = parseInt(colorHex.slice(1, 3), 16);
+    const tg = parseInt(colorHex.slice(3, 5), 16);
+    const tb = parseInt(colorHex.slice(5, 7), 16);
+
+    const imgEl = obj.getElement();
+    const offscreen = document.createElement('canvas');
+    offscreen.width  = imgEl.naturalWidth  || imgEl.width;
+    offscreen.height = imgEl.naturalHeight || imgEl.height;
+    const ctx = offscreen.getContext('2d');
+    ctx.drawImage(imgEl, 0, 0);
+
+    const imageData = ctx.getImageData(0, 0, offscreen.width, offscreen.height);
+    const data = imageData.data;
+
+    for (let i = 0; i < data.length; i += 4) {
+        const r = data[i], g = data[i+1], b = data[i+2];
+        const dist = Math.sqrt((r-tr)**2 + (g-tg)**2 + (b-tb)**2);
+        if (dist <= threshold) data[i+3] = 0;
+    }
+    ctx.putImageData(imageData, 0, 0);
+
+    const newImgEl = new Image();
+    newImgEl.onload = function() {
+        const newFabricImg = new fabric.Image(newImgEl, {
+            left:     obj.left,
+            top:      obj.top,
+            scaleX:   obj.scaleX,
+            scaleY:   obj.scaleY,
+            angle:    obj.angle,
+            flipX:    obj.flipX,
+            flipY:    obj.flipY,
+            originX:  obj.originX,
+            originY:  obj.originY,
+            selectable: obj.selectable,
+            evented:    obj.evented
+        });
+        canvas.remove(obj);
+        canvas.add(newFabricImg);
+        canvas.setActiveObject(newFabricImg);
+        frameRect.bringToFront();
+        canvas.renderAll();
+        if (callback) callback(newFabricImg);
+    };
+    newImgEl.src = offscreen.toDataURL('image/png');
+}
+
+function startEyeDropper() {
+    if (!window.EyeDropper) {
+        alert('このブラウザはスポイト機能に対応していません。');
+        return;
+    }
+    const eyeDropper = new EyeDropper();
+    eyeDropper.open().then(function(result) {
+        document.getElementById('chromaKeyColor').value = result.sRGBHex;
+    }).catch(function() {
+        // キャンセル時は何もしない
+    });
+}
+
+window.addEventListener('keydown', function(e) {
+    if (e.key === 'Delete' || e.key === 'Backspace') {
+        const obj = canvas.getActiveObject();
+        if (obj && !obj.isEditing && obj.name !== 'frame') deleteObject();
+    }
+});
+
+buildFrame();
+applyZoom(100);
+</script>
+</body>
+</html>

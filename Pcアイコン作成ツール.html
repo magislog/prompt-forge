@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PNG to ICO コンバーター</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#f5f5f5;font-family:'Hiragino Kaku Gothic ProN','Meiryo',sans-serif;min-height:100vh;padding:24px;}
+h1{font-size:18px;font-weight:700;color:#333;margin-bottom:20px;}
+.layout{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;}
+.panel{background:#fff;border:1px solid #e0e0e0;border-radius:12px;padding:16px;}
+.panel-left{min-width:240px;max-width:300px;flex:1;}
+.panel-right{flex:2;min-width:300px;}
+.panel-title{font-size:11px;color:#999;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.drop-zone{border:2px dashed #ddd;border-radius:8px;height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:border-color 0.15s;background:#fafafa;margin-bottom:16px;}
+.drop-zone:hover{border-color:#aaa;}
+.drop-zone.over{border-color:#666;}
+.drop-text{font-size:13px;color:#888;}
+.drop-sub{font-size:11px;color:#bbb;margin-top:4px;}
+.sizes{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.size-check{display:flex;align-items:center;gap:4px;font-size:12px;color:#555;cursor:pointer;}
+.size-check input{accent-color:#7a4fa0;cursor:pointer;width:14px;height:14px;}
+.btn{width:100%;padding:9px;font-size:13px;font-weight:600;border-radius:8px;border:1px solid #ddd;background:#7a4fa0;color:#fff;cursor:pointer;transition:all 0.15s;}
+.btn:hover{background:#6a3f90;}
+.btn:disabled{opacity:0.35;cursor:not-allowed;background:#ccc;border-color:#ccc;}
+.preview-grid{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;}
+.preview-item{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.preview-label{font-size:11px;color:#999;}
+.preview-bg{background:repeating-conic-gradient(#ddd 0% 25%,#fff 0% 50%) 0 0/10px 10px;border:1px solid #e0e0e0;border-radius:4px;display:flex;align-items:center;justify-content:center;}
+.status{font-size:12px;color:#bbb;text-align:center;padding:30px;}
+.hint{font-size:11px;color:#aaa;margin-top:10px;line-height:1.6;}
+</style>
+</head>
+<body>
+<h1>PNG to ICO コンバーター</h1>
+<div class="layout">
+  <div class="panel panel-left">
+    <div class="panel-title">画像をアップロード</div>
+    <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
+      <div class="drop-text">クリックまたはドロップ</div>
+      <div class="drop-sub">PNG / JPG / WEBP</div>
+    </div>
+    <input type="file" id="file-input" accept="image/*" style="display:none;">
+
+    <div style="font-size:12px;color:#666;margin-bottom:8px;">含めるサイズ</div>
+    <div class="sizes" id="sizes">
+      <label class="size-check"><input type="checkbox" value="16" checked> 16px</label>
+      <label class="size-check"><input type="checkbox" value="32" checked> 32px</label>
+      <label class="size-check"><input type="checkbox" value="48" checked> 48px</label>
+      <label class="size-check"><input type="checkbox" value="64"> 64px</label>
+      <label class="size-check"><input type="checkbox" value="128"> 128px</label>
+      <label class="size-check"><input type="checkbox" value="256"> 256px</label>
+    </div>
+    <button class="btn" id="convert-btn" onclick="convertToICO()" disabled>ICO に変換してダウンロード</button>
+    <div class="hint">Windowsのショートカットアイコンには 16・32・48px の3サイズが推奨です。</div>
+  </div>
+
+  <div class="panel panel-right">
+    <div class="panel-title">プレビュー</div>
+    <div id="preview-area">
+      <div class="status">画像をアップロードしてください</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const fileInput = document.getElementById('file-input');
+const dropZone = document.getElementById('drop-zone');
+const convertBtn = document.getElementById('convert-btn');
+const previewArea = document.getElementById('preview-area');
+let srcImg = null;
+
+fileInput.onchange = e => loadFile(e.target.files[0]);
+dropZone.ondragover = e => { e.preventDefault(); dropZone.classList.add('over'); };
+dropZone.ondragleave = () => dropZone.classList.remove('over');
+dropZone.ondrop = e => { e.preventDefault(); dropZone.classList.remove('over'); loadFile(e.dataTransfer.files[0]); };
+
+function loadFile(file) {
+  if (!file || !file.type.startsWith('image/')) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const img = new Image();
+    img.onload = () => {
+      srcImg = img;
+      dropZone.innerHTML = `<img src="${ev.target.result}" style="max-width:100%;max-height:140px;border-radius:6px;object-fit:contain;">`;
+      convertBtn.disabled = false;
+      renderPreview();
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function getCheckedSizes() {
+  return [...document.querySelectorAll('#sizes input:checked')].map(i => parseInt(i.value)).sort((a,b)=>a-b);
+}
+
+document.querySelectorAll('#sizes input').forEach(cb => {
+  cb.onchange = () => { if (srcImg) renderPreview(); };
+});
+
+function renderPreview() {
+  const sizes = getCheckedSizes();
+  if (!sizes.length) { previewArea.innerHTML = '<div class="status">サイズを選択してください</div>'; return; }
+  previewArea.innerHTML = '<div class="preview-grid" id="preview-grid"></div>';
+  const grid = document.getElementById('preview-grid');
+  sizes.forEach(size => {
+    const item = document.createElement('div');
+    item.className = 'preview-item';
+    const bg = document.createElement('div');
+    bg.className = 'preview-bg';
+    const disp = Math.max(size, 32);
+    bg.style.cssText = `width:${disp}px;height:${disp}px;`;
+    const canvas = document.createElement('canvas');
+    canvas.width = size; canvas.height = size;
+    canvas.style.cssText = `width:${size}px;height:${size}px;image-rendering:pixelated;`;
+    canvas.getContext('2d').drawImage(srcImg, 0, 0, size, size);
+    bg.appendChild(canvas);
+    item.appendChild(bg);
+    const label = document.createElement('div');
+    label.className = 'preview-label';
+    label.textContent = `${size} x ${size}`;
+    item.appendChild(label);
+    grid.appendChild(item);
+  });
+}
+
+function convertToICO() {
+  const sizes = getCheckedSizes();
+  if (!srcImg || !sizes.length) return;
+
+  const pngDataList = sizes.map(size => {
+    const canvas = document.createElement('canvas');
+    canvas.width = size; canvas.height = size;
+    canvas.getContext('2d').drawImage(srcImg, 0, 0, size, size);
+    const base64 = canvas.toDataURL('image/png').split(',')[1];
+    const binary = atob(base64);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    return bytes;
+  });
+
+  const count = sizes.length;
+  const headerSize = 6;
+  const dirEntrySize = 16;
+  const dirSize = headerSize + dirEntrySize * count;
+  let totalSize = dirSize;
+  pngDataList.forEach(d => totalSize += d.length);
+
+  const buf = new ArrayBuffer(totalSize);
+  const view = new DataView(buf);
+  const u8 = new Uint8Array(buf);
+
+  view.setUint16(0, 0, true);
+  view.setUint16(2, 1, true);
+  view.setUint16(4, count, true);
+
+  let offset = dirSize;
+  pngDataList.forEach((pngData, i) => {
+    const size = sizes[i];
+    const d = headerSize + dirEntrySize * i;
+    view.setUint8(d, size >= 256 ? 0 : size);
+    view.setUint8(d+1, size >= 256 ? 0 : size);
+    view.setUint8(d+2, 0);
+    view.setUint8(d+3, 0);
+    view.setUint16(d+4, 1, true);
+    view.setUint16(d+6, 32, true);
+    view.setUint32(d+8, pngData.length, true);
+    view.setUint32(d+12, offset, true);
+    u8.set(pngData, offset);
+    offset += pngData.length;
+  });
+
+  const blob = new Blob([buf], {type:'image/x-icon'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'icon.ico';
+  a.click();
+}
+</script>
+</body>
+</html>
