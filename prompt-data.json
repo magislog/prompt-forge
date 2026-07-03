@@ -6629,6 +6629,700 @@
                   "pos": "shoulder cape"
                 }
               ]
+            },
+            {
+              "name": "水着",
+              "side": "chara",
+              "words": [
+                {
+                  "ja": "ワンピース水着",
+                  "pos": "one-piece swimsuit, classic one-piece swimsuit"
+                },
+                {
+                  "ja": "競泳水着",
+                  "pos": "competition swimsuit, racing swimsuit, covered swimsuit, athletic"
+                },
+                {
+                  "ja": "標準ビキニ",
+                  "pos": "bikini, simple bikini, cleavage, navel"
+                },
+                {
+                  "ja": "ストリングビキニ",
+                  "pos": "string bikini, side-tie bikini, thin straps, cleavage, navel"
+                },
+                {
+                  "ja": "ホルターネックビキニ",
+                  "pos": "halterneck bikini, halter top bikini, cleavage, navel"
+                },
+                {
+                  "ja": "バンドゥビキニ",
+                  "pos": "bandeau bikini, strapless bikini, tube top bikini, cleavage, navel"
+                },
+                {
+                  "ja": "ハイレグ水着",
+                  "pos": "highleg one-piece swimsuit, highleg leotard swimsuit, thighs"
+                },
+                {
+                  "ja": "ハイウエストビキニ",
+                  "pos": "high-waisted bikini, retro bikini, vintage swimsuit, cleavage"
+                },
+                {
+                  "ja": "タンキニ",
+                  "pos": "tankini, tank top swimsuit top with bikini bottom, sporty, navel"
+                },
+                {
+                  "ja": "モノキニ",
+                  "pos": "monokini, cutout one-piece swimsuit, side cutouts, navel cutout"
+                },
+                {
+                  "ja": "スリングショット水着",
+                  "pos": "slingshot swimsuit, suspender swimsuit, thin straps over shoulders, cleavage, navel"
+                },
+                {
+                  "ja": "フリルビキニ",
+                  "pos": "frilled bikini, ruffle bikini, frills, cleavage, navel"
+                },
+                {
+                  "ja": "レースアップビキニ",
+                  "pos": "lace-up bikini, laced straps bikini, cleavage, navel"
+                },
+                {
+                  "ja": "オフショルダービキニ",
+                  "pos": "off-shoulder bikini, bardot bikini top, bare shoulders, cleavage, navel"
+                },
+                {
+                  "ja": "フロントクロスビキニ",
+                  "pos": "front cross bikini, crossed straps bikini top, cleavage, navel"
+                },
+                {
+                  "ja": "スポーツビキニ",
+                  "pos": "sports bikini, athletic bikini, sporty swimwear, toned body, navel"
+                },
+                {
+                  "ja": "ラッシュガード",
+                  "pos": "rash guard, long sleeve zip-up swimwear, surf swimsuit, zipper"
+                },
+                {
+                  "ja": "ワンショルダー水着",
+                  "pos": "one-shoulder one-piece swimsuit, asymmetric strap, cleavage"
+                },
+                {
+                  "ja": "バックレスワンピース",
+                  "pos": "backless one-piece swimsuit, low back swimsuit, halter neck, cleavage"
+                },
+                {
+                  "ja": "スカート付き水着",
+                  "pos": "skirted swimsuit, swim skirt, frilled skirt bikini bottom, cute"
+                },
+                {
+                  "ja": "ダブルストラップビキニ",
+                  "pos": "bikini, blue side-tie bikini bottom, black double waist straps, V-shaped hip straps, extra thin straps across both hips forming a V, strappy high-leg bikini bottom, cleavage, navel"
+                }
+              ]
+            },
+            {
+              "name": "コスチューム",
+              "side": "chara",
+              "words": [
+                {
+                  "ja": "セクシーナース",
+                  "pos": "sexy nurse, white nurse mini dress, short tight dress, cleavage, bare shoulders, garter belt, white thighhighs, nurse cap, stethoscope, white high heels, hospital, full body, standing"
+                },
+                {
+                  "ja": "バニーカジノディーラー",
+                  "pos": "bunny girl, playboy bunny costume, casino dealer, black leotard, bunny ears, rabbit tail, detached collar, bowtie, wrist cuffs, cleavage, fishnet pantyhose, high heels, holding playing cards, casino, full body, standing"
+                },
+                {
+                  "ja": "悪魔の女教官",
+                  "pos": "female demon instructor, succubus, demon horns, demon wings, demon tail, black leather corset, cleavage, navel, garter straps, thigh-high boots, holding whip, dark classroom, full body, standing"
+                },
+                {
+                  "ja": "宇宙警察官",
+                  "pos": "space police officer, futuristic sci-fi bodysuit, skin tight, cleavage cutout, glowing armor parts, energy pistol, holographic visor, neon space station, full body, standing"
+                },
+                {
+                  "ja": "サイバーパンク捜査官",
+                  "pos": "cyberpunk detective, neon city night, cyber visor, tight black bodysuit, midriff, navel, mechanical augmentations, holographic interface, garter, thighhighs, full body, standing"
+                },
+                {
+                  "ja": "モンスター専門女医",
+                  "pos": "monster doctor, fantasy veterinarian, open lab coat, bikini armor underneath, cleavage, glasses, holding glowing potion, magical clinic, thighhighs, full body, standing"
+                },
+                {
+                  "ja": "魔法学園教師",
+                  "pos": "magic academy teacher, witch, open robe, cleavage, white blouse, garter belt, thighhighs, witch hat, holding magic staff, glasses, classroom, full body, standing"
+                },
+                {
+                  "ja": "王宮専属メイド",
+                  "pos": "royal palace maid, luxurious ornate maid dress, gold trim, cleavage, frilled apron, garter straps, white thighhighs, royal palace interior, full body, standing"
+                },
+                {
+                  "ja": "吸血鬼ハンター",
+                  "pos": "vampire hunter, gothic open leather coat, cleavage, corset, thigh holster, crossbow, thigh-high boots, moonlit gothic city, full body, standing"
+                },
+                {
+                  "ja": "女スパイ",
+                  "pos": "secret agent spy, black tight backless dress, bare back, deep v-neckline, cleavage, thigh-high slit, thigh holster, long gloves, high heels, elegant, full body, standing"
+                },
+                {
+                  "ja": "怪盗",
+                  "pos": "phantom thief, elegant white tuxedo dress, cleavage, top hat, domino mask, thighhighs, long gloves, cape, night rooftop, full body, standing"
+                },
+                {
+                  "ja": "賞金稼ぎ",
+                  "pos": "bounty hunter, western outfit, leather vest, cleavage, midriff, navel, short shorts, gun holster, thigh-high boots, cowboy hat, desert town, full body, standing"
+                },
+                {
+                  "ja": "女性尋問官",
+                  "pos": "female interrogator, tight military uniform, unbuttoned, cleavage, pencil skirt with slit, garter, thighhighs, stern expression, dim interrogation room, full body, standing"
+                },
+                {
+                  "ja": "戦闘シスター",
+                  "pos": "battle nun, gothic nun habit with cutouts, cleavage, garter straps, thighhighs, holy sword, cross, cathedral, full body, standing"
+                },
+                {
+                  "ja": "錬金術師",
+                  "pos": "alchemist, fantasy outfit, corset, cleavage, midriff, mechanical gauntlet, glowing potions, garter, thighhighs, alchemy workshop, full body, standing"
+                },
+                {
+                  "ja": "宮廷占星術師",
+                  "pos": "court astrologer, celestial open robe, cleavage, star and moon motifs, sheer fabric, thighhighs, holding star staff, night observatory, full body, standing"
+                },
+                {
+                  "ja": "ダンジョン受付嬢",
+                  "pos": "dungeon receptionist, fantasy guild uniform, low-cut blouse, cleavage, corset, very short miniskirt, thighhighs, reception counter, full body, standing"
+                },
+                {
+                  "ja": "冒険者ギルド職員",
+                  "pos": "adventurer guild clerk, fantasy clerk outfit, open vest, cleavage, miniskirt, garter, thighhighs, holding quill and ledger, guild hall, full body, standing"
+                },
+                {
+                  "ja": "魔界のキャバレー支配人",
+                  "pos": "demon cabaret manager, succubus, glamorous slit evening dress, deep cleavage, bare shoulders, demon horns, demon tail, long gloves, thighhighs, high heels, luxurious demon cabaret, full body, standing"
+                },
+                {
+                  "ja": "神父",
+                  "pos": "female priest, black cassock, gold trim, white clerical collar, open neckline, cleavage, holy cross necklace, holding bible, garter, white thighhighs, cathedral, full body, standing"
+                },
+                {
+                  "ja": "シスター",
+                  "pos": "nun, sister, white wimple and veil, black and white nun habit, white collar, cleavage, rosary, holy cross, garter belt, white thighhighs, cathedral, full body, standing"
+                }
+              ]
+            },
+            {
+              "name": "職業コスプレ",
+              "side": "chara",
+              "words": [
+                {
+                  "ja": "クラシックメイド",
+                  "pos": "victorian maid, long maid dress, white apron, maid headdress"
+                },
+                {
+                  "ja": "カフェメイド",
+                  "pos": "cafe maid, maid apron, frilled skirt, serving tray"
+                },
+                {
+                  "ja": "ダイナーウェイトレス",
+                  "pos": "diner waitress, striped uniform, apron, name tag"
+                },
+                {
+                  "ja": "カフェ店員",
+                  "pos": "cafe waitress, apron, collared shirt, serving coffee"
+                },
+                {
+                  "ja": "バーテンダー",
+                  "pos": "bartender, waistcoat, bow tie, white shirt"
+                },
+                {
+                  "ja": "ホテルコンシェルジュ",
+                  "pos": "hotel concierge, formal uniform, pillbox hat, gloves"
+                },
+                {
+                  "ja": "ベルガール",
+                  "pos": "bellhop, hotel uniform, pillbox hat, luggage cart"
+                },
+                {
+                  "ja": "ハウスキーパー",
+                  "pos": "housekeeper, apron, cleaning tools, uniform"
+                },
+                {
+                  "ja": "パティシエ",
+                  "pos": "pastry chef, chef hat, frilled apron, pastries"
+                },
+                {
+                  "ja": "ショコラティエ",
+                  "pos": "chocolatier, apron, chef uniform, chocolate box"
+                },
+                {
+                  "ja": "コンビニ店員",
+                  "pos": "convenience store uniform, apron, name tag"
+                },
+                {
+                  "ja": "レストラン受付",
+                  "pos": "restaurant hostess, elegant uniform, menu book"
+                },
+                {
+                  "ja": "外科医",
+                  "pos": "surgeon, surgical scrubs, surgical mask, medical gloves"
+                },
+                {
+                  "ja": "薬剤師",
+                  "pos": "pharmacist, lab coat, medicine bottle, glasses"
+                },
+                {
+                  "ja": "歯科医",
+                  "pos": "dentist, dental mask, medical gloves, white coat"
+                },
+                {
+                  "ja": "獣医",
+                  "pos": "veterinarian, lab coat, stethoscope, holding animal"
+                },
+                {
+                  "ja": "研究助手",
+                  "pos": "laboratory assistant, lab coat, clipboard, test tubes"
+                },
+                {
+                  "ja": "マッドサイエンティスト",
+                  "pos": "mad scientist, messy lab coat, goggles, chemicals"
+                },
+                {
+                  "ja": "考古学者",
+                  "pos": "archaeologist, explorer outfit, fedora, ancient artifact"
+                },
+                {
+                  "ja": "新聞記者",
+                  "pos": "reporter, press badge, notebook, microphone"
+                },
+                {
+                  "ja": "テレビリポーター",
+                  "pos": "television reporter, microphone, formal outfit"
+                },
+                {
+                  "ja": "お天気キャスター",
+                  "pos": "weather presenter, pointing at weather map, formal dress"
+                },
+                {
+                  "ja": "女性警察官",
+                  "pos": "policewoman, police uniform, police hat, handcuffs"
+                },
+                {
+                  "ja": "私立探偵",
+                  "pos": "private investigator, trench coat, magnifying glass, notebook"
+                },
+                {
+                  "ja": "警備員",
+                  "pos": "security guard, security uniform, cap, flashlight"
+                },
+                {
+                  "ja": "ボディガード",
+                  "pos": "bodyguard, black suit, sunglasses, earpiece"
+                },
+                {
+                  "ja": "救急救命士",
+                  "pos": "paramedic, paramedic uniform, medical bag, gloves"
+                },
+                {
+                  "ja": "士官",
+                  "pos": "military officer, officer uniform, peaked cap, medals"
+                },
+                {
+                  "ja": "海軍士官",
+                  "pos": "naval officer, white naval uniform, peaked cap"
+                },
+                {
+                  "ja": "客室乗務員",
+                  "pos": "flight attendant, flight attendant uniform, neck scarf, pillbox hat"
+                },
+                {
+                  "ja": "車掌",
+                  "pos": "train conductor, conductor uniform, conductor cap, pocket watch"
+                },
+                {
+                  "ja": "建設作業員",
+                  "pos": "construction worker, hard hat, tool belt, safety vest"
+                },
+                {
+                  "ja": "電気工事士",
+                  "pos": "electrician, tool belt, work gloves, safety helmet"
+                },
+                {
+                  "ja": "配達員",
+                  "pos": "delivery woman, delivery uniform, cap, carrying package"
+                },
+                {
+                  "ja": "農家",
+                  "pos": "farmer, overalls, straw hat, vegetable basket"
+                },
+                {
+                  "ja": "園芸家",
+                  "pos": "gardener, gardening apron, straw hat, pruning shears"
+                },
+                {
+                  "ja": "漁師",
+                  "pos": "fisherwoman, fishing vest, rubber boots, fishing rod"
+                },
+                {
+                  "ja": "セーラー服コスプレ",
+                  "pos": "adult woman, sailor school uniform cosplay, sailor collar, pleated skirt"
+                },
+                {
+                  "ja": "ブレザー制服コスプレ",
+                  "pos": "adult woman, school blazer cosplay, necktie, pleated skirt"
+                },
+                {
+                  "ja": "体操服コスプレ",
+                  "pos": "adult woman, gym uniform cosplay, gym shirt, bloomers"
+                },
+                {
+                  "ja": "チアリーダー",
+                  "pos": "cheerleader, cheerleader uniform, pom pom"
+                },
+                {
+                  "ja": "マーチングバンド",
+                  "pos": "marching band uniform, marching hat, baton"
+                },
+                {
+                  "ja": "ポップシンガー",
+                  "pos": "pop singer, stage outfit, handheld microphone"
+                },
+                {
+                  "ja": "ロックボーカル",
+                  "pos": "rock singer, leather jacket, microphone, stage lights"
+                },
+                {
+                  "ja": "DJ",
+                  "pos": "disc jockey, headphones, DJ booth, futuristic outfit"
+                },
+                {
+                  "ja": "ギタリスト",
+                  "pos": "guitarist, electric guitar, stage outfit"
+                },
+                {
+                  "ja": "バイオリニスト",
+                  "pos": "violinist, violin, concert dress"
+                },
+                {
+                  "ja": "ドラマー",
+                  "pos": "drummer, drumsticks, drum set, stage outfit"
+                },
+                {
+                  "ja": "ピアニスト",
+                  "pos": "pianist, grand piano, evening gown"
+                },
+                {
+                  "ja": "サーカス団長",
+                  "pos": "ringmaster, top hat, tailcoat, riding crop"
+                },
+                {
+                  "ja": "サーカス曲芸師",
+                  "pos": "circus acrobat, leotard, trapeze, circus costume"
+                },
+                {
+                  "ja": "ピエロ",
+                  "pos": "female clown, clown costume, ruffled collar, striped stockings"
+                },
+                {
+                  "ja": "バレリーナ",
+                  "pos": "ballerina, ballet dress, tutu, ballet slippers"
+                },
+                {
+                  "ja": "フラメンコダンサー",
+                  "pos": "flamenco dancer, ruffled dress, holding fan"
+                },
+                {
+                  "ja": "ベリーダンサー",
+                  "pos": "belly dancer, belly dance costume, veil, jewelry"
+                },
+                {
+                  "ja": "テニス選手",
+                  "pos": "tennis player, tennis uniform, tennis racket, visor"
+                },
+                {
+                  "ja": "バレーボール選手",
+                  "pos": "volleyball player, volleyball uniform, knee pads, volleyball"
+                },
+                {
+                  "ja": "バスケットボール選手",
+                  "pos": "basketball player, basketball uniform, basketball"
+                },
+                {
+                  "ja": "野球選手",
+                  "pos": "baseball player, baseball uniform, baseball cap, baseball bat"
+                },
+                {
+                  "ja": "サッカー選手",
+                  "pos": "soccer player, soccer uniform, soccer ball, knee socks"
+                },
+                {
+                  "ja": "陸上選手",
+                  "pos": "track and field athlete, running uniform, starting blocks"
+                },
+                {
+                  "ja": "体操選手",
+                  "pos": "gymnast, gymnastics leotard, ribbon, balance beam"
+                },
+                {
+                  "ja": "フィギュアスケーター",
+                  "pos": "figure skater, skating dress, ice skates"
+                },
+                {
+                  "ja": "ボクサー",
+                  "pos": "female boxer, boxing gloves, boxing shorts, sports top"
+                },
+                {
+                  "ja": "プロレスラー",
+                  "pos": "female wrestler, wrestling outfit, championship belt"
+                },
+                {
+                  "ja": "空手家",
+                  "pos": "karate practitioner, karate gi, black belt, fighting stance"
+                },
+                {
+                  "ja": "柔道家",
+                  "pos": "judo practitioner, judo gi, black belt"
+                },
+                {
+                  "ja": "フェンシング選手",
+                  "pos": "fencer, fencing uniform, fencing sword, fencing mask"
+                },
+                {
+                  "ja": "水泳選手",
+                  "pos": "swimmer, competition swimsuit, swimming goggles, poolside"
+                },
+                {
+                  "ja": "ライフガード",
+                  "pos": "lifeguard, lifeguard swimsuit, whistle, rescue float"
+                },
+                {
+                  "ja": "サーファー",
+                  "pos": "surfer, wetsuit, surfboard, beach"
+                },
+                {
+                  "ja": "サイクリスト",
+                  "pos": "cyclist, cycling jersey, bicycle helmet, road bicycle"
+                },
+                {
+                  "ja": "ヨガインストラクター",
+                  "pos": "yoga instructor, yoga pants, yoga mat, stretching"
+                },
+                {
+                  "ja": "魔術師",
+                  "pos": "sorceress, magic circle, staff, ornate robe"
+                },
+                {
+                  "ja": "狂戦士",
+                  "pos": "female berserker, fur armor, large axe, battle scars"
+                },
+                {
+                  "ja": "くノ一",
+                  "pos": "kunoichi, kunai, fishnet, short kimono"
+                },
+                {
+                  "ja": "狼女",
+                  "pos": "werewolf girl, wolf ears, wolf tail, fur outfit"
+                },
+                {
+                  "ja": "海賊船長",
+                  "pos": "female pirate captain, captain hat, long coat, cutlass"
+                },
+                {
+                  "ja": "トレジャーハンター",
+                  "pos": "treasure hunter, explorer outfit, treasure map, ancient ruins"
+                },
+                {
+                  "ja": "スチームパンク技師",
+                  "pos": "steampunk engineer, goggles, tool belt, mechanical arm"
+                },
+                {
+                  "ja": "サイバーパンクハッカー",
+                  "pos": "cyberpunk hacker, holographic screen, cybernetic implants, neon city"
+                },
+                {
+                  "ja": "アンドロイド",
+                  "pos": "android girl, mechanical joints, futuristic bodysuit, glowing circuits"
+                },
+                {
+                  "ja": "神楽舞姫",
+                  "pos": "shrine dancer, chihaya, red hakama, holding bells"
+                },
+                {
+                  "ja": "女武芸者",
+                  "pos": "onna-bugeisha, naginata, samurai armor, hakama"
+                },
+                {
+                  "ja": "チャイナドレス",
+                  "pos": "china dress, qipao, hair buns, chinese ornaments"
+                },
+                {
+                  "ja": "漢服",
+                  "pos": "hanfu, flowing sleeves, hair ornament, folding fan"
+                },
+                {
+                  "ja": "韓服",
+                  "pos": "hanbok, jeogori, chima, hair ornament"
+                },
+                {
+                  "ja": "アオザイ",
+                  "pos": "ao dai, long tunic, silk pants, vietnamese hat"
+                },
+                {
+                  "ja": "サリー",
+                  "pos": "sari, jewelry, bindi, draped fabric"
+                },
+                {
+                  "ja": "アラビアンダンサー",
+                  "pos": "arabian dancer, veil, harem pants, gold jewelry"
+                },
+                {
+                  "ja": "エジプト女王",
+                  "pos": "egyptian queen, egyptian headdress, gold jewelry, white dress"
+                },
+                {
+                  "ja": "ギリシャ女神",
+                  "pos": "greek goddess, laurel wreath, white toga, gold jewelry"
+                },
+                {
+                  "ja": "北欧盾乙女",
+                  "pos": "norse shieldmaiden, fur cloak, round shield, axe"
+                },
+                {
+                  "ja": "ヴィクトリア朝令嬢",
+                  "pos": "victorian lady, victorian dress, bonnet, parasol"
+                },
+                {
+                  "ja": "サンタガール",
+                  "pos": "santa girl, santa hat, red christmas dress, gift sack"
+                },
+                {
+                  "ja": "トナカイガール",
+                  "pos": "reindeer girl, antlers, bell collar, christmas outfit"
+                },
+                {
+                  "ja": "イースターバニー",
+                  "pos": "easter bunny, rabbit ears, easter egg basket, pastel outfit"
+                },
+                {
+                  "ja": "ハロウィン魔女",
+                  "pos": "halloween witch, witch hat, pumpkin lantern, halloween costume"
+                },
+                {
+                  "ja": "ミイラ娘",
+                  "pos": "mummy girl, bandages, egyptian jewelry, halloween costume"
+                },
+                {
+                  "ja": "小悪魔",
+                  "pos": "devil costume, demon horns, demon tail, pitchfork"
+                },
+                {
+                  "ja": "天使コスプレ",
+                  "pos": "angel costume, halo, small wings, white dress"
+                },
+                {
+                  "ja": "カボチャ娘",
+                  "pos": "pumpkin costume, pumpkin hat, halloween dress"
+                },
+                {
+                  "ja": "仮面舞踏会",
+                  "pos": "masquerade, masquerade mask, ball gown, chandelier"
+                },
+                {
+                  "ja": "カーニバルダンサー",
+                  "pos": "carnival dancer, feather headdress, sequined costume"
+                },
+                {
+                  "ja": "花嫁",
+                  "pos": "bride, wedding dress, bridal veil, bouquet"
+                },
+                {
+                  "ja": "バレンタインショコラティエ",
+                  "pos": "valentine chocolatier, heart apron, chocolate box, ribbons"
+                },
+                {
+                  "ja": "正月晴れ着",
+                  "pos": "new year kimono, furisode, folding fan, hair ornament"
+                },
+                {
+                  "ja": "パジャマパーティー",
+                  "pos": "pajama party, pajamas, pillow, bedroom"
+                },
+                {
+                  "ja": "スキーウェア",
+                  "pos": "ski outfit, ski goggles, ski poles, snowy mountain"
+                },
+                {
+                  "ja": "ビーチパーティー",
+                  "pos": "beach party, summer dress, beach ball, tropical drink"
+                },
+                {
+                  "ja": "スパイ",
+                  "pos": "female spy, black dress, handgun, secret agent gadget"
+                },
+                {
+                  "ja": "怪盗",
+                  "pos": "female cat burglar, black mask, loot bag, grappling hook"
+                },
+                {
+                  "ja": "仮面の自警団員",
+                  "pos": "masked vigilante, domino mask, cape, rooftop"
+                },
+                {
+                  "ja": "スーパーヒロイン",
+                  "pos": "superheroine, cape, heroic pose, city skyline"
+                },
+                {
+                  "ja": "特撮風ヒロイン",
+                  "pos": "tokusatsu heroine, armored bodysuit, helmet under arm, heroic pose"
+                },
+                {
+                  "ja": "SFパイロット",
+                  "pos": "female sci-fi pilot, pilot suit, helmet, spacecraft cockpit"
+                },
+                {
+                  "ja": "タクティカルオペレーター",
+                  "pos": "female tactical operator, tactical vest, headset, utility belt"
+                },
+                {
+                  "ja": "世紀末サバイバー",
+                  "pos": "post-apocalyptic survivor, torn jacket, goggles, improvised weapon"
+                },
+                {
+                  "ja": "女剣闘士",
+                  "pos": "female gladiator, gladiator armor, sword, arena"
+                },
+                {
+                  "ja": "女銃士",
+                  "pos": "female musketeer, feathered hat, rapier, cape"
+                },
+                {
+                  "ja": "中世酒場娘",
+                  "pos": "tavern wench, medieval dress, apron, wooden mug"
+                },
+                {
+                  "ja": "ルネサンス貴婦人",
+                  "pos": "renaissance lady, ornate gown, pearl necklace, palace"
+                },
+                {
+                  "ja": "フラッパー",
+                  "pos": "flapper, 1920s dress, feather headband, pearl necklace"
+                },
+                {
+                  "ja": "西部劇サルーンガール",
+                  "pos": "saloon girl, corset dress, feather hair ornament, western saloon"
+                },
+                {
+                  "ja": "カウガール",
+                  "pos": "cowgirl, cowboy hat, western shirt, gun belt"
+                },
+                {
+                  "ja": "ショーガール",
+                  "pos": "showgirl, feather headdress, sequined costume, stage"
+                },
+                {
+                  "ja": "ファッションモデル",
+                  "pos": "fashion model, runway, designer dress, fashion show"
+                }
+              ]
             }
           ]
         },
@@ -10551,6 +11245,1050 @@
                 {
                   "ja": "左足を伸ばす(完全)",
                   "pos": "left leg extended"
+                }
+              ]
+            },
+            {
+              "name": "ヨガポーズ",
+              "side": "chara",
+              "words": [
+                {
+                  "ja": "シッダーサナ",
+                  "pos": "yoga pose, sitting cross-legged, indian style sitting, meditation pose, hands resting on knees, upright back"
+                },
+                {
+                  "ja": "バドラーサナ",
+                  "pos": "yoga pose, sitting on floor, soles of feet pressed together, knees apart, holding both feet with hands, upright back"
+                },
+                {
+                  "ja": "ヴァジュラーサナ",
+                  "pos": "yoga pose, kneeling, sitting back on heels, seiza, hands resting on thighs, upright back"
+                },
+                {
+                  "ja": "シンハーサナ",
+                  "pos": "yoga lion pose, kneeling, hands on knees with spread fingers, open mouth, tongue out, wide eyes"
+                },
+                {
+                  "ja": "シュッダ・パドマーサナ",
+                  "pos": "yoga lotus position, padmasana, legs crossed with feet on opposite thighs, hands resting on knees, meditation, upright back"
+                },
+                {
+                  "ja": "スヴァスティカーサナ",
+                  "pos": "yoga pose, sitting cross-legged, legs comfortably crossed, hands resting on knees, upright posture"
+                },
+                {
+                  "ja": "ゴームカーサナ",
+                  "pos": "yoga cow face pose, sitting with knees stacked on top of each other, one arm raised and bent behind head, other arm bent behind lower back, hands clasped behind back"
+                },
+                {
+                  "ja": "ヴィーラーサナ",
+                  "pos": "yoga hero pose, kneeling with feet beside hips, sitting between the heels, hands resting on thighs, upright back"
+                },
+                {
+                  "ja": "マンドゥーカーサナ",
+                  "pos": "yoga frog pose, kneeling with knees spread wide apart, sitting back, hands in fists pressed against abdomen, leaning slightly forward"
+                },
+                {
+                  "ja": "マツイェーンドラーサナ",
+                  "pos": "yoga seated spinal twist, sitting on floor, one leg bent with knee up, torso twisted to the side, one arm braced behind the back, looking over shoulder"
+                },
+                {
+                  "ja": "パシュチモッターナーサナ",
+                  "pos": "yoga seated forward bend, sitting with both legs extended straight forward, bending forward over the legs, reaching for the feet with hands, head lowered toward knees"
+                },
+                {
+                  "ja": "シャイタ・パシュチマターナーサナ",
+                  "pos": "yoga supine pose, lying on back, both legs raised straight up, holding feet with hands, gentle stretch"
+                },
+                {
+                  "ja": "ヴャーグラーサナ",
+                  "pos": "yoga tiger pose, on all fours, on hands and knees, one leg raised up and bent at the knee, arched back, looking up"
+                },
+                {
+                  "ja": "クラウンチャーサナ",
+                  "pos": "yoga heron pose, sitting on floor, one leg folded, the other leg raised straight upward, holding the raised foot with both hands, upright back"
+                },
+                {
+                  "ja": "シャヴァーサナ",
+                  "pos": "yoga corpse pose, lying flat on back, arms resting at sides, legs relaxed and slightly apart, eyes closed, calm relaxed expression"
+                }
+              ]
+            },
+            {
+              "name": "ヨガ",
+              "side": "chara",
+              "words": [
+                {
+                  "ja": "シュッダ・パドマーサナ",
+                  "pos": "yoga lotus position, padmasana, legs crossed with feet on opposite thighs, hands resting on knees, meditation, upright back"
+                },
+                {
+                  "ja": "ヴァジュラーサナ",
+                  "pos": "yoga pose, kneeling, sitting back on heels, seiza, hands resting on thighs, upright back"
+                },
+                {
+                  "ja": "シンハーサナ",
+                  "pos": "yoga lion pose, kneeling, hands on knees with spread fingers, open mouth, tongue out, wide eyes"
+                },
+                {
+                  "ja": "マンドゥーカーサナ",
+                  "pos": "yoga frog pose, kneeling with knees spread wide apart, sitting back, hands in fists pressed against abdomen, leaning slightly forward"
+                },
+                {
+                  "ja": "ゴームカーサナ",
+                  "pos": "yoga cow face pose, sitting with knees stacked on top of each other, one arm raised and bent behind head, other arm bent behind lower back, hands clasped behind back"
+                },
+                {
+                  "ja": "マツイェーンドラーサナ",
+                  "pos": "yoga seated spinal twist, sitting on floor, one leg bent with knee up, torso twisted to the side, one arm braced behind the back, looking over shoulder"
+                },
+                {
+                  "ja": "パシュチモッターナーサナ",
+                  "pos": "yoga seated forward bend, sitting with both legs extended straight forward, bending forward over the legs, reaching for the feet with hands, head lowered toward knees"
+                },
+                {
+                  "ja": "シャイタ・パシュチマターナーサナ",
+                  "pos": "yoga supine pose, lying on back, both legs raised straight up, holding feet with hands, gentle stretch"
+                },
+                {
+                  "ja": "ヴャーグラーサナ",
+                  "pos": "yoga tiger pose, on all fours, on hands and knees, one leg raised up and bent at the knee, arched back, looking up"
+                },
+                {
+                  "ja": "クラウンチャーサナ",
+                  "pos": "yoga heron pose, sitting on floor, one leg folded, the other leg raised straight upward, holding the raised foot with both hands, upright back"
+                },
+                {
+                  "ja": "シャヴァーサナ",
+                  "pos": "yoga corpse pose, lying flat on back, arms resting at sides, legs relaxed and slightly apart, eyes closed, calm relaxed expression"
+                }
+              ]
+            },
+            {
+              "name": "ストレッチ",
+              "side": "chara",
+              "words": [
+                {
+                  "ja": "首ストレッチ",
+                  "pos": "neck stretch, sitting upright, tilting head to one side, one hand gently pulling the head"
+                },
+                {
+                  "ja": "肩ストレッチ",
+                  "pos": "shoulder stretch, standing, one arm pulled straight across the chest, other arm holding it in place"
+                },
+                {
+                  "ja": "上腕三頭筋ストレッチ",
+                  "pos": "triceps stretch, standing, one arm bent behind the head with elbow pointing up, other hand pressing the elbow"
+                },
+                {
+                  "ja": "胸開きストレッチ",
+                  "pos": "chest opening stretch, standing, both arms pulled back, hands clasped behind the back, chest pushed forward"
+                },
+                {
+                  "ja": "体側伸ばし",
+                  "pos": "standing side stretch, one arm raised overhead, leaning the upper body to the side, other hand on hip"
+                },
+                {
+                  "ja": "猫のポーズ",
+                  "pos": "cat stretch, on all fours, on hands and knees, rounded arched back, head lowered"
+                },
+                {
+                  "ja": "チャイルドポーズ",
+                  "pos": "child pose, kneeling and sitting back on heels, torso folded forward over the knees, arms extended forward on the floor, forehead down"
+                },
+                {
+                  "ja": "コブラ",
+                  "pos": "cobra stretch, lying prone on stomach, chest lifted, arms straight pushing the upper body up, back gently arched"
+                },
+                {
+                  "ja": "寝ねじりストレッチ",
+                  "pos": "supine spinal twist, lying on back, knees bent and dropped to one side, arms spread out, head turned the other way"
+                },
+                {
+                  "ja": "鳩のポーズ",
+                  "pos": "pigeon stretch, one leg folded bent in front on the floor, the other leg extended straight back, upright torso"
+                },
+                {
+                  "ja": "開脚ストレッチ",
+                  "pos": "seated straddle stretch, sitting on floor, both legs spread wide apart in a V shape, upright back, hands resting on the floor"
+                },
+                {
+                  "ja": "開脚前屈",
+                  "pos": "seated wide-legged forward bend, legs spread wide apart, leaning the torso forward, reaching both hands forward on the floor"
+                },
+                {
+                  "ja": "座位前屈",
+                  "pos": "seated forward fold, sitting with both legs extended forward together, bending forward over the legs, reaching for the feet"
+                },
+                {
+                  "ja": "立位前屈",
+                  "pos": "standing forward fold, standing with straight legs, bending forward at the hips, both hands reaching down to the floor"
+                },
+                {
+                  "ja": "ランジストレッチ",
+                  "pos": "low lunge stretch, one foot forward with knee bent, the other knee resting on the floor, hip flexor stretch, upright torso"
+                },
+                {
+                  "ja": "サイドランジ",
+                  "pos": "side lunge stretch, wide stance, leaning to one side with that knee bent, the other leg kept straight"
+                },
+                {
+                  "ja": "深いスクワット",
+                  "pos": "deep squat stretch, full deep squat with feet flat on the floor, hands together at the chest, upright back"
+                },
+                {
+                  "ja": "膝抱えストレッチ",
+                  "pos": "lying knee-to-chest stretch, lying on back, both hands hugging one bent knee to the chest, the other leg extended on the floor"
+                },
+                {
+                  "ja": "立位大腿四頭筋",
+                  "pos": "standing quad stretch, standing on one leg, the other knee bent pulling the foot up to the buttock with one hand, balancing"
+                },
+                {
+                  "ja": "ふくらはぎストレッチ",
+                  "pos": "calf stretch, lunge stance with front knee bent and back leg kept straight, back heel pressed down, leaning forward with hands forward"
+                }
+              ]
+            },
+            {
+              "name": "開脚",
+              "side": "chara",
+              "words": [
+                {
+                  "ja": "前後開脚",
+                  "pos": "front split, full body, both legs fully extended, hips facing forward"
+                },
+                {
+                  "ja": "横開脚",
+                  "pos": "middle split, full body, both legs extended sideways, upright torso"
+                },
+                {
+                  "ja": "開脚座り",
+                  "pos": "seated straddle, legs spread wide, upright sitting pose"
+                },
+                {
+                  "ja": "開脚前屈",
+                  "pos": "seated straddle, wide leg split, leaning forward, hands on the floor"
+                },
+                {
+                  "ja": "片脚前屈",
+                  "pos": "seated, one leg extended sideways, other leg bent, leaning toward the extended leg"
+                },
+                {
+                  "ja": "仰向け開脚",
+                  "pos": "lying on back, legs spread wide, full body"
+                },
+                {
+                  "ja": "壁開脚",
+                  "pos": "lying on back, legs spread against a wall, full body"
+                },
+                {
+                  "ja": "立位Y字バランス",
+                  "pos": "standing on one leg, holding the other leg high to the side, Y balance"
+                },
+                {
+                  "ja": "立位正面脚上げ",
+                  "pos": "standing on one leg, holding the other leg straight up in front, high leg hold"
+                },
+                {
+                  "ja": "スタンディングスプリット",
+                  "pos": "standing split, torso leaning forward, one leg extended vertically upward"
+                },
+                {
+                  "ja": "サイドレッグホールド",
+                  "pos": "standing, one leg lifted high to the side, holding the ankle, balanced pose"
+                },
+                {
+                  "ja": "フロントレッグホールド",
+                  "pos": "standing, one leg lifted straight forward, holding the ankle"
+                },
+                {
+                  "ja": "ニードルポーズ",
+                  "pos": "needle pose, standing on one leg, torso folded forward, other leg extended vertically upward"
+                },
+                {
+                  "ja": "アラベスク",
+                  "pos": "arabesque pose, standing on one leg, other leg extended backward, arms spread"
+                },
+                {
+                  "ja": "アラベスクパンシェ",
+                  "pos": "penche arabesque, torso leaning forward, one leg extended high behind"
+                },
+                {
+                  "ja": "スプリットジャンプ",
+                  "pos": "split leap, legs extended in a front split in midair, side view"
+                },
+                {
+                  "ja": "ストラドルジャンプ",
+                  "pos": "straddle jump, legs spread wide sideways in midair, front view"
+                },
+                {
+                  "ja": "倒立前後開脚",
+                  "pos": "handstand split, one leg forward and one leg backward, straight legs"
+                },
+                {
+                  "ja": "倒立横開脚",
+                  "pos": "handstand straddle, legs spread wide sideways, straight arms"
+                },
+                {
+                  "ja": "ブリッジ片脚上げ",
+                  "pos": "bridge pose, one leg extended upward, full body"
+                }
+              ]
+            },
+            {
+              "name": "胸ポーズ",
+              "side": "chara",
+              "words": [
+                {
+                  "ja": "胸下腕組み",
+                  "pos": "arms crossed under bust, upright posture, chest lifted, front view"
+                },
+                {
+                  "ja": "両手後頭部",
+                  "pos": "both hands behind head, elbows spread, shoulders pulled back, chest lifted"
+                },
+                {
+                  "ja": "片腕上げ",
+                  "pos": "one arm raised overhead, slight torso twist, chest lifted, three-quarter view"
+                },
+                {
+                  "ja": "両腕上げ",
+                  "pos": "both arms raised above head, body stretched upward, chest naturally emphasized"
+                },
+                {
+                  "ja": "髪かき上げ",
+                  "pos": "one hand brushing back hair, shoulders pulled back, slight back arch, chest lifted"
+                },
+                {
+                  "ja": "座り反り姿勢",
+                  "pos": "seated, both hands placed behind body, arms supporting torso, slight back arch, chest lifted"
+                },
+                {
+                  "ja": "壁もたれ胸張り",
+                  "pos": "leaning back against a wall, shoulders back, chest forward, relaxed pose"
+                },
+                {
+                  "ja": "前傾ポーズ",
+                  "pos": "leaning slightly forward, hands on thighs, shoulders close together, chest emphasized by perspective"
+                },
+                {
+                  "ja": "テーブル前傾",
+                  "pos": "leaning forward over a table, forearms resting on table, chest emphasized by perspective"
+                },
+                {
+                  "ja": "うつ伏せ肘立て",
+                  "pos": "lying on stomach, upper body raised on elbows, forearms close together, looking at viewer"
+                },
+                {
+                  "ja": "横向き寝姿勢",
+                  "pos": "lying on side, head supported by one hand, upper body slightly twisted toward camera"
+                },
+                {
+                  "ja": "仰向け軽い反り",
+                  "pos": "lying on back, one arm above head, slight back arch, chest lifted"
+                },
+                {
+                  "ja": "胸元アクセサリー",
+                  "pos": "one hand touching necklace at upper chest, shoulders back, three-quarter view"
+                },
+                {
+                  "ja": "ストラップ調整",
+                  "pos": "adjusting one shoulder strap, opposite shoulder lowered, chest lifted"
+                },
+                {
+                  "ja": "両手腰",
+                  "pos": "both hands on hips, shoulders back, chest lifted, confident stance"
+                },
+                {
+                  "ja": "片手腰片腕上げ",
+                  "pos": "one hand on hip, other arm raised, slight torso twist, chest lifted"
+                },
+                {
+                  "ja": "胸前ハート",
+                  "pos": "forming a heart shape with both hands above chest, elbows angled inward"
+                },
+                {
+                  "ja": "胸元ピース",
+                  "pos": "peace signs near upper chest, elbows inward, shoulders slightly raised"
+                },
+                {
+                  "ja": "タオル抱え",
+                  "pos": "holding a towel around upper body, hands close together below chest"
+                },
+                {
+                  "ja": "前腕寄せ",
+                  "pos": "forearms held close in front of torso, shoulders slightly inward, front view"
+                }
+              ]
+            },
+            {
+              "name": "セクシーポーズ",
+              "side": "chara",
+              "words": [
+                {
+                  "ja": "振り返りポーズ",
+                  "pos": "looking back over shoulder, body facing away, slight hip twist, elegant pose"
+                },
+                {
+                  "ja": "片脚交差立ち",
+                  "pos": "standing with legs crossed, weight on one leg, relaxed hips, confident expression"
+                },
+                {
+                  "ja": "腰ひねりS字立ち",
+                  "pos": "standing in an S-curve pose, hips tilted, waist twisted slightly, relaxed shoulders"
+                },
+                {
+                  "ja": "片膝曲げ立ち",
+                  "pos": "standing on one leg, other knee slightly bent, toes touching floor, graceful pose"
+                },
+                {
+                  "ja": "壁に片手をつく",
+                  "pos": "one hand against wall, body turned sideways, slight waist twist, looking at viewer"
+                },
+                {
+                  "ja": "壁際振り返り",
+                  "pos": "standing close to wall, back partly toward viewer, looking back over shoulder"
+                },
+                {
+                  "ja": "ドア枠にもたれる",
+                  "pos": "leaning against a doorway, one shoulder against the frame, one knee bent"
+                },
+                {
+                  "ja": "片手で襟元をつまむ",
+                  "pos": "lightly holding her collar with one hand, head slightly tilted, subtle seductive expression"
+                },
+                {
+                  "ja": "ジャケット肩掛け",
+                  "pos": "jacket draped loosely over shoulders, holding one lapel, relaxed standing pose"
+                },
+                {
+                  "ja": "腰に片手顎に片手",
+                  "pos": "one hand on hip, other hand near chin, slight body twist, confident pose"
+                },
+                {
+                  "ja": "指先を唇の近くへ",
+                  "pos": "one finger near lips, playful expression, slight head tilt, three-quarter view"
+                },
+                {
+                  "ja": "髪を片側へ流す",
+                  "pos": "gathering hair over one shoulder, neck exposed, body angled sideways"
+                },
+                {
+                  "ja": "首筋に手を添える",
+                  "pos": "one hand resting lightly on side of neck, head tilted, relaxed elegant posture"
+                },
+                {
+                  "ja": "肩越しに視線",
+                  "pos": "shoulders angled away, eyes looking toward viewer, subtle smile"
+                },
+                {
+                  "ja": "椅子に浅く腰掛ける",
+                  "pos": "sitting near edge of chair, knees together, one foot slightly forward, upright posture"
+                },
+                {
+                  "ja": "椅子に横向き座り",
+                  "pos": "sitting sideways on chair, legs together, torso turned toward viewer"
+                },
+                {
+                  "ja": "椅子の背に腕を置く",
+                  "pos": "sitting backwards on a chair, arms resting on chair back, relaxed expression"
+                },
+                {
+                  "ja": "床座り片膝立て",
+                  "pos": "sitting on floor, one knee raised, other leg folded, one hand behind body"
+                },
+                {
+                  "ja": "横座り",
+                  "pos": "sitting with both legs folded to one side, one hand on floor, elegant posture"
+                },
+                {
+                  "ja": "正座から片側に崩す",
+                  "pos": "side-saddle kneeling pose, hips resting beside heels, upright torso"
+                },
+                {
+                  "ja": "ベッド端に腰掛ける",
+                  "pos": "sitting on edge of bed, knees together, hands resting beside hips, looking at viewer"
+                },
+                {
+                  "ja": "うつ伏せ脚上げ",
+                  "pos": "lying on stomach, lower legs raised behind, ankles crossed, chin resting on hands"
+                },
+                {
+                  "ja": "横寝で片膝を曲げる",
+                  "pos": "lying on side, one knee bent forward, upper body supported by elbow"
+                },
+                {
+                  "ja": "仰向け片膝立て",
+                  "pos": "lying on back, one knee raised, other leg extended, one arm beside head"
+                },
+                {
+                  "ja": "膝立ち振り返り",
+                  "pos": "kneeling, body facing away, looking back over shoulder, slight waist twist"
+                },
+                {
+                  "ja": "片膝立ち",
+                  "pos": "one knee on floor, other foot planted forward, upright torso, confident pose"
+                },
+                {
+                  "ja": "両膝立ち腰ひねり",
+                  "pos": "kneeling upright, hips slightly shifted to one side, torso gently twisted"
+                },
+                {
+                  "ja": "腰掛け脚組み",
+                  "pos": "seated with legs crossed at knees, one hand resting on thigh, elegant posture"
+                },
+                {
+                  "ja": "足首交差座り",
+                  "pos": "seated with ankles crossed, knees together, torso slightly angled"
+                },
+                {
+                  "ja": "サングラスずらし",
+                  "pos": "lowering sunglasses slightly with one hand, looking over the frames, confident expression"
+                }
+              ]
+            },
+            {
+              "name": "ベッド寝姿勢",
+              "side": "chara",
+              "words": [
+                {
+                  "ja": "仰向け両腕体の横",
+                  "pos": "lying on back on bed, arms resting beside body, legs relaxed, looking upward, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "仰向け片手頭上",
+                  "pos": "lying on back on bed, one arm raised above head, other hand resting beside body, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "仰向け両手頭上",
+                  "pos": "lying on back on bed, both arms stretched above head, relaxed posture, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "仰向け手を顔の横",
+                  "pos": "lying on back on bed, both hands beside face, elbows bent, looking at viewer, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "仰向け片膝立て",
+                  "pos": "lying on back on bed, one knee raised, other leg extended, relaxed pose, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "仰向け両膝立て",
+                  "pos": "lying on back on bed, both knees bent, feet resting on mattress, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "仰向け脚を組む",
+                  "pos": "lying on back on bed, ankles crossed, arms relaxed, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "仰向け片脚を上げる",
+                  "pos": "lying on back on bed, one leg raised upward, other leg resting on mattress, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "仰向け両脚軽く上げる",
+                  "pos": "lying on back on bed, both lower legs raised, knees bent, relaxed playful pose, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "仰向け枕を抱える",
+                  "pos": "lying on back on bed, hugging a pillow to chest, looking at viewer, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "横向き完全に寝る",
+                  "pos": "lying on side on bed, head resting on pillow, legs gently bent, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "横向き頬杖",
+                  "pos": "lying on side on bed, upper body supported by one elbow, cheek resting on hand, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "横向き顔の横に手",
+                  "pos": "lying on side on bed, one hand beside face, head resting on pillow, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "横向き両手を顔の近く",
+                  "pos": "lying on side on bed, both hands near face, curled relaxed posture, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "横向き片膝を前に",
+                  "pos": "lying on side on bed, upper knee bent forward, lower leg extended, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "横向き両脚を曲げる",
+                  "pos": "lying on side on bed, both knees bent, curled sleeping pose, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "横向き足を後ろへ上げる",
+                  "pos": "lying on side on bed, lower legs raised behind, knees bent, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "横向き背中向けて振り返る",
+                  "pos": "lying on side on bed, back facing viewer, looking back over shoulder, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "横向き枕を抱える",
+                  "pos": "lying on side on bed, hugging pillow, knees slightly bent, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "横向き丸まって寝る",
+                  "pos": "curled up on side on bed, knees drawn toward chest, sleeping pose, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "うつ伏せ顔だけ横向き",
+                  "pos": "lying face down on bed, face turned sideways, arms beside head, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "うつ伏せ肘立て",
+                  "pos": "lying on stomach on bed, upper body supported by elbows, looking at viewer, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "うつ伏せ顎を両手に",
+                  "pos": "lying on stomach on bed, chin resting on both hands, elbows on mattress, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "うつ伏せ片手を顔の横",
+                  "pos": "lying on stomach on bed, one hand beside face, head turned toward viewer, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "うつ伏せ両脚を上げる",
+                  "pos": "lying on stomach on bed, lower legs raised behind, knees bent, ankles crossed, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "うつ伏せ片脚だけ曲げる",
+                  "pos": "lying on stomach on bed, one knee bent, foot raised behind, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "うつ伏せ枕に顔を埋める",
+                  "pos": "lying face down on bed, face partly buried in pillow, relaxed sleeping pose, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "うつ伏せ枕を抱える",
+                  "pos": "lying on stomach on bed, hugging pillow, face turned sideways, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "掛け布団から顔だけ",
+                  "pos": "lying in bed under blanket, only face visible above blanket, looking at viewer, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "布団から顔と片手",
+                  "pos": "lying under blanket, face and one hand visible, hand beside cheek, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "布団を鼻まで",
+                  "pos": "lying in bed, blanket pulled up to nose, eyes visible, shy expression, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "布団を胸元まで",
+                  "pos": "lying on back under blanket, blanket covering body up to chest, arms outside blanket, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "横向きで布団から覗く",
+                  "pos": "lying on side under blanket, face peeking out, head resting on pillow, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "布団を頭まで",
+                  "pos": "hiding under blanket, only face peeking out from opening, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "布団を抱きしめる",
+                  "pos": "lying on side on bed, hugging blanket tightly, relaxed expression, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "布団を片手で持ち上げる",
+                  "pos": "lying in bed, holding edge of blanket with one hand, face visible, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "枕にもたれて仰向け",
+                  "pos": "reclining on bed, upper body supported by pillows, legs extended, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "片肘をつく",
+                  "pos": "reclining on bed, upper body supported by one elbow, legs relaxed, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "両肘をつく",
+                  "pos": "reclining on bed, upper body supported by both elbows, looking at viewer, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "横向き半身起こし",
+                  "pos": "lying on side on bed, upper body raised slightly, supported by one arm, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "ヘッドボードにもたれる",
+                  "pos": "sitting on bed, back resting against headboard, legs stretched forward, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "布団かけたまま起き上がる",
+                  "pos": "sitting up in bed, blanket wrapped around body, sleepy expression, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "両脚を曲げて横へ",
+                  "pos": "lying on back on bed, both knees bent to one side, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "片脚を反対側へ倒す",
+                  "pos": "lying on back on bed, one knee bent across body, gentle torso twist, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "ベッド端から脚を垂らす",
+                  "pos": "lying on bed near edge, lower legs hanging off mattress, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "足首だけ交差",
+                  "pos": "lying on stomach on bed, lower legs raised, ankles crossed, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "膝を胸元へ寄せる",
+                  "pos": "lying on back on bed, one knee drawn toward chest, holding knee lightly, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "両膝を抱える",
+                  "pos": "lying on back on bed, hugging both knees, curled relaxed pose, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "仰向け太もも抱えつま先頭向き",
+                  "pos": "lying on back on bed, hugging both thighs to chest, knees deeply bent, lower legs folded upward, toes pointing toward head, feet near head, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                },
+                {
+                  "ja": "仰向け太もも抱え左右非対称",
+                  "pos": "lying on back on bed, hugging both thighs, knees bent toward chest, lower legs raised, toes pointing toward head, asymmetrical leg position, natural anatomy, relaxed pose, simple composition, clear hands, clear legs"
+                }
+              ]
+            },
+            {
+              "name": "かわいいポーズ",
+              "side": "chara",
+              "words": [
+                {
+                  "ja": "両手ほっぺ",
+                  "pos": "both hands on cheeks, elbows outward, cheerful smile, looking at viewer, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "片手ほっぺ",
+                  "pos": "one hand touching cheek, head slightly tilted, gentle smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "ほっぺ指差し",
+                  "pos": "pointing at both cheeks with index fingers, playful smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "顔横ダブルピース",
+                  "pos": "double peace signs beside face, bright smile, looking at viewer, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "片目横ピース",
+                  "pos": "peace sign beside one eye, winking, playful expression, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "頭上ハート",
+                  "pos": "forming a heart above head with both arms, cheerful expression, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "指ハート",
+                  "pos": "making a finger heart with one hand, other hand behind back, smiling, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "両手指ハート",
+                  "pos": "making finger hearts with both hands, hands near face, happy expression, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "胸前ハート",
+                  "pos": "forming a heart with both hands in front of chest, sweet smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "両手を振る",
+                  "pos": "waving both hands, open palms, cheerful smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "小さく片手を振る",
+                  "pos": "gently waving one hand beside face, shy smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "両手を後ろに隠す",
+                  "pos": "both hands behind back, leaning slightly forward, innocent smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "内股立ち",
+                  "pos": "standing with knees slightly inward, toes turned inward, hands clasped in front, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "片足を後ろへ曲げる",
+                  "pos": "standing on one leg, other leg bent backward, hands clasped behind back, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "片足上げダブルピース",
+                  "pos": "standing on one leg, other leg bent backward, double peace signs, cheerful smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "つま先立ち",
+                  "pos": "standing on tiptoes, hands clasped behind back, body leaning slightly forward, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "スカート端を持つ",
+                  "pos": "lightly holding both sides of skirt, small curtsy, gentle smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "お辞儀ポーズ",
+                  "pos": "slight bow, hands clasped in front, warm smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "お願いポーズ",
+                  "pos": "hands clasped together near chest, pleading eyes, hopeful expression, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "両手を合わせて喜ぶ",
+                  "pos": "hands clasped beside face, excited smile, sparkling eyes, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "ガッツポーズ",
+                  "pos": "small fist raised beside face, energetic smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "両手にぎりこぶし",
+                  "pos": "both fists held near shoulders, excited expression, energetic pose, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "猫の手ポーズ",
+                  "pos": "both hands curled like cat paws near face, playful smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "猫耳ポーズ",
+                  "pos": "both hands above head forming cat ears, playful expression, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "うさぎ耳ポーズ",
+                  "pos": "two fingers raised above head like bunny ears, cheerful smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "袖で口元を隠す",
+                  "pos": "covering mouth with long sleeve, shy smile, slightly flushed cheeks, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "両袖でほっぺを包む",
+                  "pos": "cheeks covered by oversized sleeves, hands near face, bashful expression, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "帽子を両手で押さえる",
+                  "pos": "holding hat brim with both hands, head slightly tilted, gentle smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "バッグを前で抱える",
+                  "pos": "holding a small bag with both hands in front of body, knees slightly inward, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "ぬいぐるみを抱える",
+                  "pos": "hugging a stuffed animal, cheek resting against it, happy smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "プレゼントを差し出す",
+                  "pos": "holding a small gift box toward viewer with both hands, bright smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "花束を抱える",
+                  "pos": "holding a bouquet close to chest, head slightly tilted, gentle smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "マグカップを両手で持つ",
+                  "pos": "holding a mug with both hands near face, cozy expression, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "頬杖で微笑む",
+                  "pos": "sitting at a table, cheek resting on one hand, soft smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "椅子で足を揺らす",
+                  "pos": "sitting on chair, feet slightly raised, gently swinging legs, cheerful expression, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "床で体育座り",
+                  "pos": "sitting on floor, knees drawn up, arms loosely wrapped around legs, gentle smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "横座りで両手を膝に置く",
+                  "pos": "sitting with legs folded to one side, both hands resting on knees, sweet smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "正座で小さく手を振る",
+                  "pos": "kneeling neatly, gently waving one hand, cheerful expression, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "振り向き笑顔",
+                  "pos": "walking away, looking back over shoulder, bright innocent smile, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                },
+                {
+                  "ja": "小走りで手を振る",
+                  "pos": "lightly running, waving one hand, lively cheerful expression, cute pose, cheerful expression, natural anatomy, simple composition, clear hands"
+                }
+              ]
+            },
+            {
+              "name": "壁ヒップ強調",
+              "side": "chara",
+              "words": [
+                {
+                  "ja": "壁つきお尻突き出し",
+                  "pos": "standing facing a wall, both hands pressed against wall, hips pushed backward, slight arch in lower back, looking over shoulder, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき片手だけ",
+                  "pos": "standing beside a wall, one hand pressed against wall, hips tilted backward, torso slightly twisted, looking at viewer, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき両腕を高く",
+                  "pos": "facing a wall, both hands placed high on wall, arms extended upward, hips pushed back, back slightly arched, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき前傾",
+                  "pos": "leaning forward with both hands against wall, hips pushed backward, legs straight, side view, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき片膝曲げ",
+                  "pos": "both hands against wall, hips pushed back, one knee bent, heel raised behind, looking over shoulder, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき片脚を後ろへ上げる",
+                  "pos": "facing a wall, both hands against wall, one leg lifted backward, knee slightly bent, hips tilted, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき片脚を横へ上げる",
+                  "pos": "one hand against wall, standing on one leg, other leg lifted sideways, torso upright, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つきつま先立ち",
+                  "pos": "both hands against wall, standing on tiptoes, hips pushed backward, legs close together, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき脚を交差",
+                  "pos": "leaning against wall with both hands, legs crossed at ankles, hips tilted to one side, looking back, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき振り返り",
+                  "pos": "facing wall, one hand on wall, back toward viewer, looking back over shoulder, hips slightly pushed back, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁にもたれて片脚上げ",
+                  "pos": "leaning back against wall, one knee raised, foot pressed against wall, relaxed pose, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁にもたれて片膝曲げ",
+                  "pos": "back against wall, one leg straight, other knee bent, toes touching floor, hips tilted, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁際片足を壁につける",
+                  "pos": "standing beside wall, one foot raised and pressed against wall behind her, body slightly twisted, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき片腕上げ振り返り",
+                  "pos": "one hand placed high on wall, other hand on hip, hips pushed back, looking over shoulder, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき両手腰位置",
+                  "pos": "both palms against wall at waist height, leaning forward slightly, hips pushed backward, side view, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき片脚を交差して上げる",
+                  "pos": "facing wall, both hands against wall, one leg bent and crossed behind the other, heel lifted, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき足首を持つ",
+                  "pos": "one hand against wall, standing on one leg, other knee bent backward, holding raised ankle with free hand, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき膝を壁へ寄せる",
+                  "pos": "both hands against wall, one knee raised toward wall, hips tilted backward, side view, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき低い前傾",
+                  "pos": "hands pressed low against wall, upper body leaning forward, hips raised, knees slightly bent, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つきS字立ち",
+                  "pos": "one hand against wall, standing in an S-curve pose, hips tilted, waist twisted, one knee slightly bent, clear side view, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                }
+              ]
+            },
+            {
+              "name": "壁ヒップ背後",
+              "side": "chara",
+              "words": [
+                {
+                  "ja": "壁つきお尻突き出し",
+                  "pos": "standing facing a wall, both hands pressed against wall, hips pushed backward, slight arch in lower back, looking over shoulder, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき片手だけ",
+                  "pos": "standing beside a wall, one hand pressed against wall, hips tilted backward, torso slightly twisted, looking back over shoulder, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき両腕を高く",
+                  "pos": "facing a wall, both hands placed high on wall, arms extended upward, hips pushed back, back slightly arched, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき前傾",
+                  "pos": "leaning forward with both hands against wall, hips pushed backward, legs straight, back view, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき片膝曲げ",
+                  "pos": "both hands against wall, hips pushed back, one knee bent, heel raised behind, looking over shoulder, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき片脚を後ろへ上げる",
+                  "pos": "facing a wall, both hands against wall, one leg lifted backward, knee slightly bent, hips tilted, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき片脚を横へ上げる",
+                  "pos": "one hand against wall, standing on one leg, other leg lifted sideways, torso upright, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つきつま先立ち",
+                  "pos": "both hands against wall, standing on tiptoes, hips pushed backward, legs close together, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき脚を交差",
+                  "pos": "leaning against wall with both hands, legs crossed at ankles, hips tilted to one side, looking back, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき振り返り",
+                  "pos": "facing wall, one hand on wall, back toward viewer, looking back over shoulder, hips slightly pushed back, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁にもたれて片脚上げ",
+                  "pos": "leaning back against wall, one knee raised, foot pressed against wall, relaxed pose, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁にもたれて片膝曲げ",
+                  "pos": "back against wall, one leg straight, other knee bent, toes touching floor, hips tilted, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁際片足を壁につける",
+                  "pos": "standing beside wall, one foot raised and pressed against wall behind her, body slightly twisted, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき片腕上げ振り返り",
+                  "pos": "one hand placed high on wall, other hand on hip, hips pushed back, looking over shoulder, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき両手腰位置",
+                  "pos": "both palms against wall at waist height, leaning forward slightly, hips pushed backward, back view, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき片脚を交差して上げる",
+                  "pos": "facing wall, both hands against wall, one leg bent and crossed behind the other, heel lifted, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき足首を持つ",
+                  "pos": "one hand against wall, standing on one leg, other knee bent backward, holding raised ankle with free hand, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき膝を壁へ寄せる",
+                  "pos": "both hands against wall, one knee raised toward wall, hips tilted backward, back view, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つき低い前傾",
+                  "pos": "hands pressed low against wall, upper body leaning forward, hips raised, knees slightly bent, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
+                },
+                {
+                  "ja": "壁つきS字立ち",
+                  "pos": "one hand against wall, standing in an S-curve pose, hips tilted, waist twisted, one knee slightly bent, from behind, back view, viewed from behind, ass focus, hips emphasized, natural anatomy, simple pose, clear hands, clear legs, non-explicit"
                 }
               ]
             }
@@ -15963,7 +17701,356 @@
       ]
     }
   ],
-  "templates": [],
+  "templates": [
+    {
+      "name": "ヨガ15ポーズ",
+      "keys": [
+        "1_2_9_0",
+        "1_2_9_1",
+        "1_2_9_2",
+        "1_2_9_3",
+        "1_2_9_4",
+        "1_2_9_5",
+        "1_2_9_6",
+        "1_2_9_7",
+        "1_2_9_8",
+        "1_2_9_9",
+        "1_2_9_10",
+        "1_2_9_11",
+        "1_2_9_12",
+        "1_2_9_13",
+        "1_2_9_14"
+      ]
+    },
+    {
+      "name": "ヨガ(11)",
+      "keys": [
+        "1_2_10_0",
+        "1_2_10_1",
+        "1_2_10_2",
+        "1_2_10_3",
+        "1_2_10_4",
+        "1_2_10_5",
+        "1_2_10_6",
+        "1_2_10_7",
+        "1_2_10_8",
+        "1_2_10_9",
+        "1_2_10_10"
+      ]
+    },
+    {
+      "name": "ストレッチ(20)",
+      "keys": [
+        "1_2_11_0",
+        "1_2_11_1",
+        "1_2_11_2",
+        "1_2_11_3",
+        "1_2_11_4",
+        "1_2_11_5",
+        "1_2_11_6",
+        "1_2_11_7",
+        "1_2_11_8",
+        "1_2_11_9",
+        "1_2_11_10",
+        "1_2_11_11",
+        "1_2_11_12",
+        "1_2_11_13",
+        "1_2_11_14",
+        "1_2_11_15",
+        "1_2_11_16",
+        "1_2_11_17",
+        "1_2_11_18",
+        "1_2_11_19"
+      ]
+    },
+    {
+      "name": "開脚(20)",
+      "keys": [
+        "1_2_12_0",
+        "1_2_12_1",
+        "1_2_12_2",
+        "1_2_12_3",
+        "1_2_12_4",
+        "1_2_12_5",
+        "1_2_12_6",
+        "1_2_12_7",
+        "1_2_12_8",
+        "1_2_12_9",
+        "1_2_12_10",
+        "1_2_12_11",
+        "1_2_12_12",
+        "1_2_12_13",
+        "1_2_12_14",
+        "1_2_12_15",
+        "1_2_12_16",
+        "1_2_12_17",
+        "1_2_12_18",
+        "1_2_12_19"
+      ]
+    },
+    {
+      "name": "胸ポーズ(20)",
+      "keys": [
+        "1_2_13_0",
+        "1_2_13_1",
+        "1_2_13_2",
+        "1_2_13_3",
+        "1_2_13_4",
+        "1_2_13_5",
+        "1_2_13_6",
+        "1_2_13_7",
+        "1_2_13_8",
+        "1_2_13_9",
+        "1_2_13_10",
+        "1_2_13_11",
+        "1_2_13_12",
+        "1_2_13_13",
+        "1_2_13_14",
+        "1_2_13_15",
+        "1_2_13_16",
+        "1_2_13_17",
+        "1_2_13_18",
+        "1_2_13_19"
+      ]
+    },
+    {
+      "name": "セクシーポーズ(30)",
+      "keys": [
+        "1_2_14_0",
+        "1_2_14_1",
+        "1_2_14_2",
+        "1_2_14_3",
+        "1_2_14_4",
+        "1_2_14_5",
+        "1_2_14_6",
+        "1_2_14_7",
+        "1_2_14_8",
+        "1_2_14_9",
+        "1_2_14_10",
+        "1_2_14_11",
+        "1_2_14_12",
+        "1_2_14_13",
+        "1_2_14_14",
+        "1_2_14_15",
+        "1_2_14_16",
+        "1_2_14_17",
+        "1_2_14_18",
+        "1_2_14_19",
+        "1_2_14_20",
+        "1_2_14_21",
+        "1_2_14_22",
+        "1_2_14_23",
+        "1_2_14_24",
+        "1_2_14_25",
+        "1_2_14_26",
+        "1_2_14_27",
+        "1_2_14_28",
+        "1_2_14_29"
+      ]
+    },
+    {
+      "name": "水着(21)",
+      "keys": [
+        "0_3_18_0",
+        "0_3_18_1",
+        "0_3_18_2",
+        "0_3_18_3",
+        "0_3_18_4",
+        "0_3_18_5",
+        "0_3_18_6",
+        "0_3_18_7",
+        "0_3_18_8",
+        "0_3_18_9",
+        "0_3_18_10",
+        "0_3_18_11",
+        "0_3_18_12",
+        "0_3_18_13",
+        "0_3_18_14",
+        "0_3_18_15",
+        "0_3_18_16",
+        "0_3_18_17",
+        "0_3_18_18",
+        "0_3_18_19",
+        "0_3_18_20"
+      ]
+    },
+    {
+      "name": "コスチューム(21)",
+      "keys": [
+        "0_3_19_0",
+        "0_3_19_1",
+        "0_3_19_2",
+        "0_3_19_3",
+        "0_3_19_4",
+        "0_3_19_5",
+        "0_3_19_6",
+        "0_3_19_7",
+        "0_3_19_8",
+        "0_3_19_9",
+        "0_3_19_10",
+        "0_3_19_11",
+        "0_3_19_12",
+        "0_3_19_13",
+        "0_3_19_14",
+        "0_3_19_15",
+        "0_3_19_16",
+        "0_3_19_17",
+        "0_3_19_18",
+        "0_3_19_19",
+        "0_3_19_20"
+      ]
+    },
+    {
+      "name": "ベッド寝姿勢(50)",
+      "keys": [
+        "1_2_15_0",
+        "1_2_15_1",
+        "1_2_15_2",
+        "1_2_15_3",
+        "1_2_15_4",
+        "1_2_15_5",
+        "1_2_15_6",
+        "1_2_15_7",
+        "1_2_15_8",
+        "1_2_15_9",
+        "1_2_15_10",
+        "1_2_15_11",
+        "1_2_15_12",
+        "1_2_15_13",
+        "1_2_15_14",
+        "1_2_15_15",
+        "1_2_15_16",
+        "1_2_15_17",
+        "1_2_15_18",
+        "1_2_15_19",
+        "1_2_15_20",
+        "1_2_15_21",
+        "1_2_15_22",
+        "1_2_15_23",
+        "1_2_15_24",
+        "1_2_15_25",
+        "1_2_15_26",
+        "1_2_15_27",
+        "1_2_15_28",
+        "1_2_15_29",
+        "1_2_15_30",
+        "1_2_15_31",
+        "1_2_15_32",
+        "1_2_15_33",
+        "1_2_15_34",
+        "1_2_15_35",
+        "1_2_15_36",
+        "1_2_15_37",
+        "1_2_15_38",
+        "1_2_15_39",
+        "1_2_15_40",
+        "1_2_15_41",
+        "1_2_15_42",
+        "1_2_15_43",
+        "1_2_15_44",
+        "1_2_15_45",
+        "1_2_15_46",
+        "1_2_15_47",
+        "1_2_15_48",
+        "1_2_15_49"
+      ]
+    },
+    {
+      "name": "かわいいポーズ(40)",
+      "keys": [
+        "1_2_16_0",
+        "1_2_16_1",
+        "1_2_16_2",
+        "1_2_16_3",
+        "1_2_16_4",
+        "1_2_16_5",
+        "1_2_16_6",
+        "1_2_16_7",
+        "1_2_16_8",
+        "1_2_16_9",
+        "1_2_16_10",
+        "1_2_16_11",
+        "1_2_16_12",
+        "1_2_16_13",
+        "1_2_16_14",
+        "1_2_16_15",
+        "1_2_16_16",
+        "1_2_16_17",
+        "1_2_16_18",
+        "1_2_16_19",
+        "1_2_16_20",
+        "1_2_16_21",
+        "1_2_16_22",
+        "1_2_16_23",
+        "1_2_16_24",
+        "1_2_16_25",
+        "1_2_16_26",
+        "1_2_16_27",
+        "1_2_16_28",
+        "1_2_16_29",
+        "1_2_16_30",
+        "1_2_16_31",
+        "1_2_16_32",
+        "1_2_16_33",
+        "1_2_16_34",
+        "1_2_16_35",
+        "1_2_16_36",
+        "1_2_16_37",
+        "1_2_16_38",
+        "1_2_16_39"
+      ]
+    },
+    {
+      "name": "壁ヒップ強調(20)",
+      "keys": [
+        "1_2_17_0",
+        "1_2_17_1",
+        "1_2_17_2",
+        "1_2_17_3",
+        "1_2_17_4",
+        "1_2_17_5",
+        "1_2_17_6",
+        "1_2_17_7",
+        "1_2_17_8",
+        "1_2_17_9",
+        "1_2_17_10",
+        "1_2_17_11",
+        "1_2_17_12",
+        "1_2_17_13",
+        "1_2_17_14",
+        "1_2_17_15",
+        "1_2_17_16",
+        "1_2_17_17",
+        "1_2_17_18",
+        "1_2_17_19"
+      ]
+    },
+    {
+      "name": "壁ヒップ背後(20)",
+      "keys": [
+        "1_2_18_0",
+        "1_2_18_1",
+        "1_2_18_2",
+        "1_2_18_3",
+        "1_2_18_4",
+        "1_2_18_5",
+        "1_2_18_6",
+        "1_2_18_7",
+        "1_2_18_8",
+        "1_2_18_9",
+        "1_2_18_10",
+        "1_2_18_11",
+        "1_2_18_12",
+        "1_2_18_13",
+        "1_2_18_14",
+        "1_2_18_15",
+        "1_2_18_16",
+        "1_2_18_17",
+        "1_2_18_18",
+        "1_2_18_19"
+      ]
+    }
+  ],
   "headerImgs": [
     "1.png",
     "2.png",
